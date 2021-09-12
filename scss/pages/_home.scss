@@ -1,0 +1,127 @@
+#entry-slider {
+  .slide-item {
+    position: relative;
+    height: 630px;
+
+    .slide-content {
+      position: absolute;
+      top: 200px;
+      left: 100px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      h6 {
+        color: #68aaeb;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 3px;
+      }
+
+      h1 {
+        font-size: 40px;
+        font-weight: 600;
+      }
+
+      h6,
+      h1 {
+        margin-bottom: 30px;
+      }
+
+      a {
+        display: inline-block;
+        background-color: #333;
+        border: 1px solid #333;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 11px 40px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: transparent;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  .swiper {
+    .swiper-button-prev,
+    .swiper-button-next {
+      &::after {
+        font-size: 30px;
+        color: #333;
+      }
+    }
+  }
+}
+
+#home-products {
+  padding: 60px 0 40px;
+
+  .tabs {
+    width: 340px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    @include flex-display(flex, row, center, space-between);
+
+    li {
+      color: $darkColor;
+      font-size: 36px;
+      cursor: pointer;
+    }
+  }
+}
+
+#advantages {
+  background-color: #f5f5f5;
+  padding: 60px 0;
+
+  .item {
+    &:hover {
+      .icon {
+        svg {
+          transform: rotate3d(0, 10, 0, 180deg);
+        }
+      }
+    }
+
+    .icon {
+      @include flex-display(flex, row, center, center);
+      position: relative;
+      margin: 0 auto;
+      width: 65px;
+      height: 65px;
+      font-size: 25px;
+      color: #222;
+      line-height: 80px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      z-index: 1;
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+      }
+
+      svg {
+        font-size: 28px;
+        transition: all .6s ease;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+  }
+}

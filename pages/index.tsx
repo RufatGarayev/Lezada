@@ -1,4 +1,7 @@
 import Head from 'next/head';
+import EntrySlider from '../components/Home/EntrySlider';
+import Products from '../components/Home/Products';
+import Advantages from '../components/Home/Advantages';
 
 const Home: React.FC = () => {
   return (
@@ -8,6 +11,10 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
         <title>Lezada - Home</title>
       </Head>
+
+      <EntrySlider />
+      <Products />
+      <Advantages />
     </div>
   )
 };
