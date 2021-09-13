@@ -5,8 +5,12 @@
 @import './partials/global';
 
 // components
-@import './components/header';
 @import './components/product-card';
+
+// layout
+@import './layout/header';
+@import './layout/footer';
+@import './layout/back-to-top-btn';
 
 // pages
 @import './pages/home';

@@ -1,0 +1,41 @@
+#back-to-top-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 40px;
+  z-index: 99;
+  display: none;
+
+  button {
+    background-color: $darkColor;
+    color: #fff;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #adb5bd;
+    }
+
+    svg {
+      font-size: 23px;
+    }
+  }
+}
+
+.show-back-to-top-btn {
+  display: block !important;
+}
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 991.99px) {
+  #back-to-top-btn {
+    bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 575.99px) {
+  #back-to-top-btn {
+    right: 20px;
+  }
+}

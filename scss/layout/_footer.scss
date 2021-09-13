@@ -1,0 +1,137 @@
+footer {
+  padding: 80px 0;
+
+  .brand {
+    padding-bottom: 25px;
+  }
+
+  h6 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .copyright {
+    p {
+      color: $primaryColor;
+      font-size: 15px;
+      line-height: 30px;
+
+      a {
+        text-decoration: none;
+        color: $primaryColor;
+        margin-left: 5px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .about-links {
+    padding-left: 40px;
+  }
+
+  .useful-links {
+    padding-left: 15px;
+  }
+
+  .about-links,
+  .useful-links {
+    li {
+      @extend %primary-link;
+
+      a {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .follow-us,
+  .about-links,
+  .useful-links {
+    a {
+      line-height: 45px !important;
+      font-size: 15px;
+      font-weight: 300;
+      color: $primaryColor;
+    }
+  }
+
+  .follow-us {
+    a {
+      text-decoration: none;
+
+      &:hover p {
+        color: $darkColor;
+      }
+
+      p {
+        transition: all 0.3s ease;
+      }
+
+      svg {
+        color: $darkColor;
+        font-size: 18px;
+      }
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    .facebook {
+      a {
+        svg {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+
+  .subscribe {
+    h2 {
+      color: $darkColor;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      letter-spacing: 0.6px;
+      color: $primaryColor;
+      margin-bottom: 40px;
+    }
+
+    form {
+      position: relative;
+
+      input[type="text"] {
+        width: 100%;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        outline: 0;
+        padding-bottom: 5px;
+    }
+
+    ::placeholder {
+      letter-spacing: 0.6px;
+    }
+
+      button {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-60%);
+
+        svg {
+          font-size: 18px;
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+}
