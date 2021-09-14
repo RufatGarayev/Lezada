@@ -1,0 +1,222 @@
+#our-ideas {
+  padding: 100px 0 60px;
+
+  .top {
+    padding: 0 85px;
+
+    h6 {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      @extend %section-title;
+      margin-bottom: 25px;
+    }
+
+    p {
+      margin-bottom: 35px;
+      letter-spacing: 1px;
+      color: $primaryColor;
+    }
+  }
+
+  .middle {
+    position: relative;
+
+    .bg-img-area {
+      height: 600px;
+      background-image: url("../../public/images/other/about-video-bg.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      @include flex-display(flex, row, center, center);
+
+      .content {
+        @include flex-display(flex, column, center, center);
+
+        .play-img {
+          height: 100px;
+          width: 100px;
+          transition: all 0.7s ease;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+
+          div {
+            height: 100%;
+            width: 100%;
+          }
+
+          img,
+          div {
+            position: static !important;
+          }
+
+          img {
+            cursor: pointer;
+          }
+        }
+
+        h3 {
+          font-size: 40px;
+          font-weight: 500;
+          margin-top: 40px;
+          letter-spacing: 12px;
+          color: #fff;
+        }
+      }
+    }
+
+    .left-link,
+    .right-link {
+      position: absolute;
+      top: 50%;
+      transform: rotate(-90deg);
+      text-decoration: none;
+      color: $primaryColor;
+      transition: all 0.3s ease;
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-weight: 600;
+
+      &:hover {
+        color: $darkColor;
+      }
+    }
+
+    .left-link {
+      left: -10%;
+    }
+
+    .right-link {
+      right: -9%;
+    }
+  }
+
+  .bottom {
+    padding-top: 50px;
+
+    .contact {
+      .contact-item {
+        padding-bottom: 38px;
+
+        h6 {
+          margin-bottom: 25px;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+        }
+
+        p {
+          color: $primaryColor;
+          font-size: 15px;
+        }
+      }
+    }
+
+    .text {
+      p {
+        color: $primaryColor;
+        letter-spacing: 1.2px;
+        font-size: 15px;
+        margin-bottom: 35px;
+        line-height: 26px;
+      }
+
+      a {
+        font-size: 13px;
+        padding: 13px 40px 15px;
+        font-weight: 600;
+        display: inline-block;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #fff;
+        border: 1px solid $darkColor;
+        background-color: $darkColor;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #fff;
+          color: $darkColor;
+        }
+
+        span {
+          margin-right: 5px;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+#testimonials {
+  padding: 100px 180px 120px;
+  background-image: url("../../public/images/testimonials/testimonials-bg.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .title {
+    h1 {
+      @extend %section-title;
+      margin-bottom: 60px;
+    }
+  }
+
+  .slide-item {
+    padding: 0 10px;
+    cursor: pointer;
+
+    .text {
+      font-size: 18px;
+      line-height: 36px;
+      padding-bottom: 40px;
+      color: $primaryColor;
+      letter-spacing: 0.5px;
+    }
+
+    .info {
+      @include flex-display(flex, row, center, flex-start);
+
+      .img {
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+
+        div {
+          height: 100%;
+          width: 100%;
+        }
+
+        img,
+        div {
+          position: static !important;
+          border-radius: 50%;
+        }
+      }
+
+      .name-and-position {
+        padding-left: 25px;
+
+        h6 {
+          font-weight: 600;
+        }
+
+        p {
+          color: $primaryColor;
+
+          span {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}

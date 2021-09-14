@@ -30,17 +30,17 @@ const Nav: React.FC = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/about">
+                                <Link href="/About">
                                     <a>About</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/shop">
+                                <Link href="/Shop">
                                     <a>Shop</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/contact">
+                                <Link href="/Contact">
                                     <a>Contact</a>
                                 </Link>
                             </li>

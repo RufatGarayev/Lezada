@@ -1,9 +1,6 @@
 import React from 'react';
 import SwiperCore, { Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/scrollbar';
 import Link from 'next/link';
 import Image from 'next/image';
 

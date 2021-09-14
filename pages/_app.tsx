@@ -1,3 +1,6 @@
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../scss/style.scss';
 import type { AppProps } from 'next/app';
