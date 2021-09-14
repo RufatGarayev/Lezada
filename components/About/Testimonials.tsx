@@ -48,8 +48,29 @@ const Testimonials: React.FC = () => {
                 </div>
                 <Swiper
                     spaceBetween={15}
-                    slidesPerView={3}
                     loop={true}
+                    breakpoints={{
+                        "320": {
+                            "slidesPerView": 1,
+                            "spaceBetween": 50
+                        },
+                        "576": {
+                            "slidesPerView": 2,
+                            "spaceBetween": 50
+                        },
+                        "768": {
+                            "slidesPerView": 2,
+                            "spaceBetween": 50
+                        },
+                        "992": {
+                            "slidesPerView": 2,
+                            "spaceBetween": 50
+                        },
+                        "1200": {
+                            "slidesPerView": 3,
+                            "spaceBetween": 50
+                        }
+                    }}
                 >
                     {
                         TestimonialsData.map(slide => (

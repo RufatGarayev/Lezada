@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import OurIdeas from '../components/About/OurIdeas';
 import Testimonials from '../components/About/Testimonials';
+import Brands from '../components/About/Brands';
 
 const About: React.FC = () => {
     return (
@@ -33,6 +34,7 @@ const About: React.FC = () => {
 
             <OurIdeas />
             <Testimonials />
+            <Brands />
         </>
     )
 };

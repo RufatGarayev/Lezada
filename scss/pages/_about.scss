@@ -220,3 +220,29 @@
     }
   }
 }
+
+#brands {
+  padding: 90px 0;
+
+  .title {
+    h1 {
+      @extend %section-title;
+      margin-bottom: 60px;
+    }
+  }
+
+  .brand-logo {
+    height: 65px;
+    cursor: pointer;
+
+    div {
+      height: 100%;
+      width: 100%;
+    }
+
+    img,
+    div {
+      position: static !important;
+    }
+  }
+}
