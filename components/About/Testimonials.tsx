@@ -1,9 +1,6 @@
 import React from 'react';
-import SwiperCore, { A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Carousel from "react-multi-carousel";
 import Image from 'next/image';
-
-SwiperCore.use([A11y]);
 
 interface ITestimonialsData {
     id: number;
@@ -35,8 +32,34 @@ const Testimonials: React.FC = () => {
             title: "Florence Pittman",
             position: "Model",
             text: "There's nothing would satisfy me much more than a worry-free clean and responsive theme for my high-traffic site."
+        },
+        {
+            id: 4,
+            img: <Image src="/../public/images/testimonials/testimonial-4.jpg" alt="logo" layout='fill' />,
+            title: "Anais Coulon",
+            position: "Actor",
+            text: "Five-star for good customer support. They have the ability to resolve any issue in less than the time for a coffee cup."
         }
     ];
+
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 4
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3
+        },
+        tablet: {
+            breakpoint: { max: 1100, min: 800 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 800, min: 0 },
+            items: 1
+        }
+    };
 
     return (
         <section id="testimonials">
@@ -46,53 +69,30 @@ const Testimonials: React.FC = () => {
                         <h1>Testimonial</h1>
                     </div>
                 </div>
-                <Swiper
-                    spaceBetween={15}
-                    loop={true}
-                    breakpoints={{
-                        "320": {
-                            "slidesPerView": 1,
-                            "spaceBetween": 50
-                        },
-                        "576": {
-                            "slidesPerView": 2,
-                            "spaceBetween": 50
-                        },
-                        "768": {
-                            "slidesPerView": 2,
-                            "spaceBetween": 50
-                        },
-                        "992": {
-                            "slidesPerView": 2,
-                            "spaceBetween": 50
-                        },
-                        "1200": {
-                            "slidesPerView": 3,
-                            "spaceBetween": 50
-                        }
-                    }}
+                <Carousel
+                    responsive={responsive}
+                    transitionDuration={200}
+                    arrows={false}
                 >
                     {
                         TestimonialsData.map(slide => (
-                            <SwiperSlide key={slide.id}>
-                                <div className="slide-item">
-                                    <div className="text">
-                                        <p>{slide.text}</p>
+                            <div key={slide.id} className="slide-item">
+                                <div className="text">
+                                    <p>{slide.text}</p>
+                                </div>
+                                <div className="info">
+                                    <div className="img">
+                                        {slide.img}
                                     </div>
-                                    <div className="info">
-                                        <div className="img">
-                                            {slide.img}
-                                        </div>
-                                        <div className="name-and-position">
-                                            <h6>{slide.title}</h6>
-                                            <p><span>/</span>{slide.position}</p>
-                                        </div>
+                                    <div className="name-and-position">
+                                        <h6>{slide.title}</h6>
+                                        <p><span>/</span>{slide.position}</p>
                                     </div>
                                 </div>
-                            </SwiperSlide>
+                            </div>
                         ))
                     }
-                </Swiper>
+                </Carousel>
             </div>
         </section>
     )

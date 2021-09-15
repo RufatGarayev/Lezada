@@ -1,9 +1,6 @@
 import React from 'react';
-import SwiperCore, { A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Carousel from "react-multi-carousel";
 import Image from 'next/image';
-
-SwiperCore.use([A11y]);
 
 interface IBrands {
     id: number;
@@ -20,6 +17,21 @@ const Brands: React.FC = () => {
         { id: 6, img: <Image src="/../public/images/brands/logo-6.png" alt="logo" layout='fill' /> }
     ];
 
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 5
+        },
+        tablet: {
+            breakpoint: { max: 1100, min: 500 },
+            items: 3
+        },
+        mobile: {
+            breakpoint: { max: 500, min: 0 },
+            items: 1
+        }
+    };
+
     return (
         <section id="brands">
             <div className="container">
@@ -28,41 +40,19 @@ const Brands: React.FC = () => {
                         <h1>Our Brands</h1>
                     </div>
                 </div>
-                <Swiper
-                    loop={true}
-                    breakpoints={{
-                        "320": {
-                            "slidesPerView": 1,
-                            "spaceBetween": 50
-                        },
-                        "576": {
-                            "slidesPerView": 2,
-                            "spaceBetween": 50
-                        },
-                        "768": {
-                            "slidesPerView": 3,
-                            "spaceBetween": 50
-                        },
-                        "992": {
-                            "slidesPerView": 4,
-                            "spaceBetween": 50
-                        },
-                        "1200": {
-                            "slidesPerView": 5,
-                            "spaceBetween": 50
-                        }
-                    }}
+                <Carousel
+                    responsive={responsive}
+                    customTransition="all .5"
+                    arrows={false}
                 >
                     {
                         Brands.map(slide => (
-                            <SwiperSlide key={slide.id}>
-                                <div className="brand-logo">
-                                    {slide.img}
-                                </div>
-                            </SwiperSlide>
+                            <div key={slide.id} className="brand-logo">
+                                {slide.img}
+                            </div>
                         ))
                     }
-                </Swiper>
+                </Carousel>
             </div>
         </section>
     )
