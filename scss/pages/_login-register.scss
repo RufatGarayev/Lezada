@@ -1,0 +1,73 @@
+#login,
+#register {
+  padding: 120px 0 130px;
+
+  .title {
+    text-align: center;
+    padding-bottom: 50px;
+
+    h2 {
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    h6 {
+      color: $primaryColor;
+      font-weight: 400;
+    }
+  }
+
+  form {
+    .inputs-wrapper {
+      padding-bottom: 40px;
+
+      input {
+        @extend %input-form;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .checkbox-input-wrapper {
+      label {
+        margin-left: 6px;
+        cursor: pointer;
+      }
+    }
+
+    .not-member {
+      padding-top: 20px;
+      color: $primaryColor;
+      font-size: 14px;
+
+      a {
+        color: $primaryColor;
+        margin-left: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: $darkColor;
+        }
+      }
+    }
+
+    .submit-btn {
+      padding-top: 40px;
+
+      input[type="submit"] {
+        @extend %primary-btn;
+      }
+    }
+  }
+}
+
+#register {
+  form {
+    .submit-btn {
+      padding-top: 15px;
+    }
+  }
+}

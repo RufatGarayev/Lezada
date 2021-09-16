@@ -54,7 +54,7 @@ const Nav: React.FC = () => {
                                 </button>
                             </li>
                             <li>
-                                <Link href="/login">
+                                <Link href="/Login">
                                     <a><HiUser /></a>
                                 </Link>
                             </li>
