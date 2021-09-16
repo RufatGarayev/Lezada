@@ -31,21 +31,8 @@
 
       a {
         display: inline-block;
-        background-color: #333;
-        border: 1px solid #333;
-        font-size: 14px;
-        font-weight: 500;
-        padding: 11px 40px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
         text-decoration: none;
-        color: #fff;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background-color: transparent;
-          color: #333;
-        }
+        @extend %primary-btn;
       }
     }
   }

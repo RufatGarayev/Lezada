@@ -1,0 +1,57 @@
+#contact-detail {
+  padding: 100px 0;
+
+  .contact-item {
+    text-align: center;
+
+    .icon {
+      svg {
+        color: $primaryColor;
+        font-size: 40px;
+      }
+    }
+
+    h6 {
+      font-size: 14px;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      margin: 22px 0 10px;
+    }
+
+    p {
+      color: $primaryColor;
+    }
+  }
+}
+
+#get-in-touch {
+  padding: 100px 0;
+
+  .inputs-wrapper {
+    padding-bottom: 30px;
+
+    input {
+      @extend %input-form;
+    }
+  }
+
+  .textarea-wrapper {
+    padding-bottom: 30px;
+
+    textarea {
+      @extend %input-form;
+    }
+  }
+
+  button[type="submit"] {
+    @extend %primary-btn;
+  }
+}
+
+#get-in-touch,
+#contact-detail {
+  h1 {
+    @extend %section-title;
+    margin-bottom: 60px;
+  }
+}

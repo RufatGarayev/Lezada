@@ -129,22 +129,9 @@
       }
 
       a {
-        font-size: 13px;
-        padding: 13px 40px 15px;
-        font-weight: 600;
         display: inline-block;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #fff;
-        border: 1px solid $darkColor;
-        background-color: $darkColor;
         text-decoration: none;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background-color: #fff;
-          color: $darkColor;
-        }
+        @extend %primary-btn;
 
         span {
           margin-right: 5px;

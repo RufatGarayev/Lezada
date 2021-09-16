@@ -72,6 +72,7 @@ footer {
 
       p {
         transition: all 0.3s ease;
+        font-weight: 400;
       }
 
       svg {
@@ -104,6 +105,7 @@ footer {
       letter-spacing: 0.6px;
       color: $primaryColor;
       margin-bottom: 40px;
+      font-weight: 400;
     }
 
     form {
@@ -121,6 +123,7 @@ footer {
 
     ::placeholder {
       letter-spacing: 0.6px;
+      font-weight: 300;
     }
 
       button {
