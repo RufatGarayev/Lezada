@@ -1,0 +1,110 @@
+#product-details {
+  padding: 100px 0;
+
+  .img-slider {
+    padding-top: 10px;
+  }
+
+  .product-info {
+    padding-left: 20px;
+
+    .rating-area {
+      padding-bottom: 16px;
+
+      span {
+        color: #f5cc26;
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+
+    .title {
+      h2 {
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+    }
+
+    .price {
+      padding-bottom: 20px;
+
+      .old-price {
+        color: $primaryColor;
+        text-decoration: line-through;
+      }
+
+      .new-price {
+        padding-left: 8px;
+        font-size: 19px;
+        font-weight: 600;
+      }
+    }
+
+    .description {
+      padding-bottom: 30px;
+
+      p {
+        color: $primaryColor;
+      }
+    }
+
+    .add-to-cart-btn {
+      padding-bottom: 40px;
+      border-bottom: 1px solid #ccc;
+
+      button {
+        @extend %primary-btn;
+      }
+    }
+
+    .table {
+      width: 450px;
+      padding-top: 30px;
+
+      tr {
+        border: 0;
+
+        td {
+          padding: 8px 0;
+
+          &:nth-child(1) {
+            font-weight: 600;
+          }
+
+          &:nth-child(2) {
+            p,
+            a {
+              color: $primaryColor;
+            }
+
+            a {
+              text-decoration: none;
+              transition: all 0.3s ease;
+
+              &:hover {
+                color: #000;
+              }
+            }
+          }
+        }
+      }
+
+      ul {
+        @include flex-display(flex, row, center, space-between);
+        width: 130px;
+
+        a svg {
+          font-size: 20px;
+        }
+
+        .twitter svg {
+          font-size: 21px;
+        }
+
+        .facebook svg {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
