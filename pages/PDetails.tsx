@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import ImgSlider from '../components/ProductDetails/ImgSlider';
 import ProductInfo from '../components/ProductDetails/ProductInfo';
+import Reviews from '../components/ProductDetails/Reviews';
 
 const PDetails: React.FC = () => {
     return (
@@ -44,6 +45,11 @@ const PDetails: React.FC = () => {
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <ProductInfo />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-8 offset-lg-2">
+                            <Reviews />
                         </div>
                     </div>
                 </div>
