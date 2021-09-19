@@ -6,7 +6,7 @@
   }
 
   .product-info {
-    padding-left: 20px;
+    padding: 0 0 60px 20px;
 
     .rating-area {
       padding-bottom: 16px;
@@ -109,21 +109,139 @@
   }
 
   .reviews {
-    .users-comments {
-      .user-item {
-        .img {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
+    padding-top: 60px;
+    border-top: 1px solid #ccc;
 
-          div {
-            height: 100%;
-            width: 100%;
+    .users-comments {
+      padding: 0 250px;
+
+      .title {
+        padding-bottom: 50px;
+
+        h3 {
+          font-weight: 400;
+        }
+      }
+
+      .user-item {
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+        border-bottom: 1px solid #ccc;
+
+        .img img {
+          border-radius: 50%;
+        }
+
+        .info {
+          padding-left: 30px;
+
+          .rating {
+            color: #f5cc26;
+            font-size: 18px;
           }
 
-          img,
-          div {
-            position: static !important;
+          .title-and-date {
+            h6 {
+              font-size: 18px;
+            }
+
+            p {
+              font-size: 14px;
+              color: $primaryColor;
+
+              &::before {
+                content: "/";
+                margin: 0 5px 0 20px;
+              }
+            }
+          }
+
+          .message p {
+            font-size: 17px;
+            color: $primaryColor;
+          }
+        }
+      }
+    }
+
+    .review-form {
+      padding: 20px 250px 0;
+
+      h3 {
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+
+      .rating {
+        @include flex-display(flex, row, center, space-between);
+        padding-bottom: 40px;
+        width: 210px;
+
+        p {
+          margin: 4px 0 0;
+          font-size: 13.5px;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+        }
+
+        .stars {
+          width: 95px;
+          @include flex-display(flex, row-reverse, center, space-between);
+
+          input[type="radio"] {
+            display: none;
+          }
+
+          label {
+            font-size: 17px;
+            cursor: pointer;
+            color: #dfdbdb;
+            transition: all 0.3s ease;
+          }
+
+          input[type="radio"]:not(:checked) ~ label:hover,
+          input[type="radio"]:not(:checked) ~ label:hover ~ label {
+            color: #f5cc26;
+          }
+
+          input[type="radio"]:checked ~ label {
+            color: #f5cc26;
+          }
+
+          input[type="radio"]#rate-5:checked ~ label {
+            color: #f5cc26;
+          }
+
+          .first-star {
+            color: #f5cc26;
+          }
+        }
+      }
+
+      .message-area {
+        .input-wrapper {
+          padding-bottom: 30px;
+
+          input {
+            @extend %input-form;
+            border-bottom: 2px solid #ccc;
+          }
+        }
+
+        .textarea-wrapper {
+          textarea {
+            @extend %input-form;
+            border-bottom: 2px solid #ccc;
+          }
+        }
+
+        .submit-review-btn {
+          @include flex-display(flex, row, center, center);
+          padding-top: 10px;
+
+          input[type="submit"] {
+            @extend %primary-btn;
+            padding: 9px 40px 12px;
           }
         }
       }

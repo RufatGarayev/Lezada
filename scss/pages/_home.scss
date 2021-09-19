@@ -65,8 +65,69 @@
   }
 }
 
+#discount {
+  padding: 80px 0 100px;
+
+  .item {
+    @include flex-display(flex, column, center, center);
+
+    .img {
+      width: 770px;
+      height: 265px;
+
+      div {
+        height: 100%;
+        width: 100%;
+      }
+
+      img,
+      div {
+        position: static !important;
+      }
+    }
+
+    .tags {
+      @include flex-display(flex, row, center, center);
+      padding: 35px 0px 40px;
+
+      ul {
+        @include flex-display(flex, row, center, space-between);
+        width: 210px;
+
+        a {
+          font-size: 18px;
+          color: $primaryColor;
+          text-decoration: none;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    }
+
+    .text {
+      h2 {
+        letter-spacing: 2px;
+        font-weight: 400;
+        font-size: 40px;
+        margin-bottom: 40px;
+      }
+    }
+
+    .btnn {
+      a {
+        @extend %primary-btn;
+        text-decoration: none;
+        padding: 11px 40px 14px;
+      }
+    }
+  }
+}
+
 #advantages {
-  // background-color: $primaryBgColor;
+  background-color: $primaryBgColor;
   padding: 60px 0;
 
   .item {

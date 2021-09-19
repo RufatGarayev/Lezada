@@ -2,6 +2,7 @@ import Head from 'next/head';
 import EntrySlider from '../components/Home/EntrySlider';
 import Products from '../components/Home/Products';
 import Advantages from '../components/Home/Advantages';
+import Discount from '../components/Home/Discount';
 
 const Home: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
       <EntrySlider />
       <Products />
       <Advantages />
+      <Discount />
     </>
   )
 };
