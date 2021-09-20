@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { GetProducts } from '../../redux/actions/productActions';
+import { RootState } from '../../redux/reducers/index';
 
 const Products: React.FC = () => {
+    const productsState = useSelector((state: RootState) => state.products);
+    const products = productsState.products;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(GetProducts());
+    }, [dispatch]);
+
+    console.log(products)
+
     return (
         <div className="products">
             <div className="row">
