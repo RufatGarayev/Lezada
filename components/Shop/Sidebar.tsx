@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface ICategoriesData {
     id: number;
@@ -13,7 +15,7 @@ const Sidebar: React.FC = () => {
         { id: 3, title: "Cosmetics" },
         { id: 4, title: "Furniture" },
         { id: 5, title: "Jewelry" },
-        { id: 6, title: "Swimsuit" }
+        { id: 6, title: "Watches" },
     ];
 
     return (
@@ -28,6 +30,73 @@ const Sidebar: React.FC = () => {
                             </li>
                         ))
                     }
+                </ul>
+            </div>
+            <div className="popular-products">
+                <ul>
+                    <li>
+                        <div className="item d-flex">
+                            <div className="img">
+                                <Image src="/../public/images/products/wooden-table.jpg" alt="product" layout='fill' />
+                            </div>
+                            <div className="info">
+                                <div className="title">
+                                    <Link href="#/">
+                                        <a>Wooden Table</a>
+                                    </Link>
+                                </div>
+                                <div className="price">
+                                    <p>
+                                        <del>$30.00</del>
+                                        <span>$24.00</span>
+                                    </p>
+                                </div>
+                                <span className="rating">★★★★★</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="item d-flex">
+                            <div className="img">
+                                <Image src="/../public/images/products/wooden-table.jpg" alt="product" layout='fill' />
+                            </div>
+                            <div className="info">
+                                <div className="title">
+                                    <Link href="#/">
+                                        <a>Wooden Table</a>
+                                    </Link>
+                                </div>
+                                <div className="price">
+                                    <p>
+                                        <del>$30.00</del>
+                                        <span>$24.00</span>
+                                    </p>
+                                </div>
+                                <span className="rating">★★★★★</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="item d-flex">
+                            <div className="img">
+                                <Image src="/../public/images/products/wooden-table.jpg" alt="product" layout='fill' />
+                            </div>
+                            <div className="info">
+                                <div className="title">
+                                    <Link href="#/">
+                                        <a>Wooden Table</a>
+                                    </Link>
+                                </div>
+                                <div className="price">
+                                    <p>
+                                        <del>$30.00</del>
+                                        <span>$24.00</span>
+                                    </p>
+                                </div>
+                                <span className="rating">★★★★★</span>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div className="tags-wrapper">

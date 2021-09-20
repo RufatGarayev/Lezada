@@ -4,6 +4,7 @@ header {
 
   nav {
     @include flex-display(flex, row, center, space-between);
+    padding-right: 11px;
 
     .links {
       ul {
