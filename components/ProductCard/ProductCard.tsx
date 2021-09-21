@@ -1,25 +1,25 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { IProductProps } from '../../data/products';
 
-const ProductCard: React.FC = () => {
+const ProductCard: React.FC<IProductProps> = ({ product }) => {
+
     return (
         <div className="product-card">
             {/* ===== card-top ===== */}
             <div className="card-top">
                 <div className="label-wrapper">
-                    <div className="sale label">
-                        <span>-20%</span>
-                    </div>
-                    <div className="new label">
-                        <span>new</span>
-                    </div>
+                    {
+                        product.label !== "" ?
+                            <div className={product.label === "new" ? "new label" : "sale label"}>
+                                <span>{product.label}</span>
+                            </div> : ""
+                    }
                 </div>
                 <div className="img">
                     <Link href="/product-detals">
-                        <a>
-                            <Image src="/../public/images/products/wooden-chair.jpg" alt="logo" layout='fill' />
-                        </a>
+                        <a><Image src={product.img} alt={product.title} layout='fill' /></a>
                     </Link>
                 </div>
             </div>
@@ -28,14 +28,18 @@ const ProductCard: React.FC = () => {
                 <div className="title">
                     <Link href="/product-detals">
                         <a>
-                            <h6>Wooden chair</h6>
+                            <h6>{product.title}</h6>
                         </a>
                     </Link>
                 </div>
                 <div className="product-price">
                     <p>
-                        <del>$30.00</del>
-                        <span>$24.00</span>
+                        {
+                            product.hasDiscount && (
+                                <del>${product.previousPrice?.toFixed(2)}</del>
+                            )
+                        }
+                        <span>${product.price.toFixed(2)}</span>
                     </p>
                 </div>
                 <div className="add-to-cart-btn">

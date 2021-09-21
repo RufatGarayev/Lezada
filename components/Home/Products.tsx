@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { GetProducts } from '../../redux/actions/productActions';
+import { RootState } from '../../redux/reducers/index';
 
 interface ITabs {
     id: number;
@@ -7,6 +10,15 @@ interface ITabs {
 };
 
 const Products: React.FC = () => {
+    const [activeGroup, setActiveGroup] = useState<string>("Popular");
+    const productsState = useSelector((state: RootState) => state.products);
+    const products = productsState.products;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(GetProducts());
+    }, [dispatch]);
+
     const Tabs: ITabs[] = [
         { id: 1, title: "New" },
         { id: 2, title: "Popular" },
@@ -21,37 +33,30 @@ const Products: React.FC = () => {
                         <ul className="tabs">
                             {
                                 Tabs.map(item => (
-                                    <li key={item.id}>{item.title}</li>
+                                    <li
+                                        key={item.id}
+                                        className={activeGroup === item.title ? "active-li" : ""}
+                                        onClick={(e: React.MouseEvent<HTMLLIElement>) =>
+                                            setActiveGroup(item.title)
+                                        }
+                                    >
+                                        {item.title}
+                                    </li>
                                 ))
                             }
                         </ul>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
-                    <div className="col-lg-3">
-                        <ProductCard />
-                    </div>
+                    {
+                        products.map(product => (
+                            product.group === activeGroup && (
+                                <div key={product.id} className="col-lg-4">
+                                    <ProductCard product={product} />
+                                </div>
+                            )
+                        ))
+                    }
                 </div>
             </div>
         </section>

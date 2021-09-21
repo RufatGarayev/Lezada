@@ -58,9 +58,18 @@
     @include flex-display(flex, row, center, space-between);
 
     li {
-      color: $darkColor;
+      color: $primaryColor;
       font-size: 30px;
       cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #000;
+      }
+    }
+
+    .active-li {
+      color: #000;
     }
   }
 }
