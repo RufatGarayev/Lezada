@@ -36,7 +36,8 @@
 
   .sidebar {
     h4 {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      font-weight: 400;
     }
 
     .categories {
@@ -50,7 +51,6 @@
           color: $primaryColor;
           font-size: 15px;
           cursor: pointer;
-          font-weight: 500;
           line-height: 17px;
           text-decoration: none;
           position: relative;
@@ -79,14 +79,25 @@
     }
 
     .popular-products {
-      padding: 0 35px 50px 0;
+      padding-right: 42px;
+      margin-bottom: 27px;
+      height: 592px;
+      overflow: hidden;
+
+      h4 {
+        margin-bottom: 35px;
+      }
 
       li {
-        &:nth-of-type(2n) {
+        &:nth-of-type(2) {
           border-top: 1px solid #ccc;
           border-bottom: 1px solid #ccc;
           padding: 20px 0;
           margin: 20px 0;
+        }
+
+        &:nth-of-type(3) {
+          margin-bottom: 100px;
         }
 
         .item {

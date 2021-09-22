@@ -3,7 +3,6 @@ import ProductCard from '../ProductCard/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { GetProducts } from '../../redux/actions/productActions';
 import { RootState } from '../../redux/reducers/index';
-// import { IProducts } from '../../data/products';
 
 const Products: React.FC = () => {
     const [visible, setVisible] = useState<number>(8);

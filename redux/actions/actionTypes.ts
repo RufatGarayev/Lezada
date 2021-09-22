@@ -5,6 +5,8 @@ export enum ActionType {
     GET_PRODUCTS_START = "GET_PRODUCTS_START",
     GET_PRODUCTS_SUCCESS = "GET_PRODUCTS_SUCCESS",
     GET_PRODUCTS_ERROR = "GET_PRODUCTS_ERROR",
+    SORT_BY_PRICE = "SORT_BY_PRICE",
+    SORT_BY_CATEGORY = "SORT_BY_CATEGORY"
 };
 
 
@@ -23,5 +25,16 @@ interface GetProductsErrorAction {
     payload: string;
 };
 
+interface SortByPriceAction {
+    type: ActionType.SORT_BY_PRICE;
+    payload: string;
+};
 
-export type ProductAction = GetProductsStartAction | GetProductsSuccessAction | GetProductsErrorAction;
+interface SortByCategoryAction {
+    type: ActionType.SORT_BY_CATEGORY;
+    payload: string;
+};
+
+
+export type ProductAction = GetProductsStartAction | GetProductsSuccessAction | GetProductsErrorAction
+    | SortByPriceAction | SortByCategoryAction;

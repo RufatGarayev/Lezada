@@ -1,6 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../redux/reducers/index';
+import { SortByCategory } from '../../redux/actions/productActions';
 
 interface ICategoriesData {
     id: number;
@@ -18,6 +21,11 @@ const Sidebar: React.FC = () => {
         { id: 6, title: "Watches" },
     ];
 
+    const productsState = useSelector((state: RootState) => state.products);
+    const products = productsState.products;
+    const loading = productsState.isLoading;
+    const dispatch = useDispatch();
+
     return (
         <div className="sidebar">
             <div className="categories">
@@ -25,7 +33,12 @@ const Sidebar: React.FC = () => {
                 <ul>
                     {
                         CategoriesData.map(item => (
-                            <li key={item.id}>
+                            <li
+                                key={item.id}
+                                onClick={(e: React.MouseEvent<HTMLLIElement>) => {
+                                    dispatch(SortByCategory(item.title));
+                                }}
+                            >
                                 {item.title}
                             </li>
                         ))
@@ -33,70 +46,39 @@ const Sidebar: React.FC = () => {
                 </ul>
             </div>
             <div className="popular-products">
+                <h4>Popular products</h4>
                 <ul>
-                    <li>
-                        <div className="item d-flex">
-                            <div className="img">
-                                <Image src="/../public/images/products/wooden-table.jpg" alt="product" layout='fill' />
-                            </div>
-                            <div className="info">
-                                <div className="title">
-                                    <Link href="#/">
-                                        <a>Wooden Table</a>
-                                    </Link>
-                                </div>
-                                <div className="price">
-                                    <p>
-                                        <del>$30.00</del>
-                                        <span>$24.00</span>
-                                    </p>
-                                </div>
-                                <span className="rating">★★★★★</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="item d-flex">
-                            <div className="img">
-                                <Image src="/../public/images/products/wooden-table.jpg" alt="product" layout='fill' />
-                            </div>
-                            <div className="info">
-                                <div className="title">
-                                    <Link href="#/">
-                                        <a>Wooden Table</a>
-                                    </Link>
-                                </div>
-                                <div className="price">
-                                    <p>
-                                        <del>$30.00</del>
-                                        <span>$24.00</span>
-                                    </p>
-                                </div>
-                                <span className="rating">★★★★★</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="item d-flex">
-                            <div className="img">
-                                <Image src="/../public/images/products/wooden-table.jpg" alt="product" layout='fill' />
-                            </div>
-                            <div className="info">
-                                <div className="title">
-                                    <Link href="#/">
-                                        <a>Wooden Table</a>
-                                    </Link>
-                                </div>
-                                <div className="price">
-                                    <p>
-                                        <del>$30.00</del>
-                                        <span>$24.00</span>
-                                    </p>
-                                </div>
-                                <span className="rating">★★★★★</span>
-                            </div>
-                        </div>
-                    </li>
+                    {
+                        products.map(product => (
+                            product.group === "Popular" && (
+                                <li key={product.id}>
+                                    <div className="item d-flex">
+                                        <div className="img">
+                                            <Image src={product.img} alt={product.title} layout='fill' />
+                                        </div>
+                                        <div className="info">
+                                            <div className="title">
+                                                <Link href="#/">
+                                                    <a>{product.title}</a>
+                                                </Link>
+                                            </div>
+                                            <div className="price">
+                                                <p>
+                                                    {
+                                                        product.hasDiscount && (
+                                                            <del>{product.previousPrice}</del>
+                                                        )
+                                                    }
+                                                    <span>${product.price.toFixed(2)}</span>
+                                                </p>
+                                            </div>
+                                            <span className="rating">{product.rating}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            )
+                        ))
+                    }
                 </ul>
             </div>
             <div className="tags-wrapper">
