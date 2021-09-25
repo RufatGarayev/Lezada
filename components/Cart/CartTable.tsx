@@ -55,7 +55,6 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                         <p className="product-price price m-0">
                                             <span>$</span>{product.price.toFixed(2)}
                                         </p>
-                                        {/* test comment */}
                                     </td>
                                     <td>
                                         <div className="quantity-wrapper">

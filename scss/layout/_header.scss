@@ -1,61 +1,77 @@
 header {
   height: 70px;
-  @include flex-display(flex, row, center, center);
 
-  nav {
+  .nav-wrapper {
+    background-color: #fff;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 70px;
     @include flex-display(flex, row, center, space-between);
-    padding-right: 11px;
 
-    .links {
-      ul {
-        width: 350px;
-        @include flex-display(flex, row, center, space-between);
+    nav {
+      width: 100%;
+      @include flex-display(flex, row, center, space-between);
+      padding-right: 11px;
 
-        li {
-          @extend %primary-link;
+      .links {
+        ul {
+          width: 350px;
+          @include flex-display(flex, row, center, space-between);
+
+          li {
+            @extend %primary-link;
+          }
         }
       }
-    }
 
-    .actions {
-      ul {
-        width: 120px;
-        @include flex-display(flex, row, center, space-between);
+      .actions {
+        ul {
+          width: 120px;
+          @include flex-display(flex, row, center, space-between);
 
-        li {
-          position: relative;
+          li {
+            position: relative;
 
-          a,
-          button {
-            font-size: 20px;
-          }
-
-          a {
-            color: #000;
-          }
-
-          .cart-btn {
-            &::after {
-              content: "";
-              line-height: 16px;
-              position: absolute;
-              top: 1px;
-              right: -11px;
-              width: 16px;
-              height: 16px;
-              text-align: center;
-              border-radius: 50%;
-              background-color: #d3122a;
+            a,
+            button {
+              font-size: 20px;
             }
-          }
 
-          sup {
-            position: absolute;
-            top: 9px;
-            color: #fff;
+            a {
+              color: #000;
+            }
+
+            .cart-btn {
+              &::after {
+                content: "";
+                line-height: 16px;
+                position: absolute;
+                top: 1px;
+                right: -11px;
+                width: 16px;
+                height: 16px;
+                text-align: center;
+                border-radius: 50%;
+                background-color: #d3122a;
+              }
+            }
+
+            sup {
+              position: absolute;
+              top: 9px;
+              color: #fff;
+            }
           }
         }
       }
     }
   }
+}
+
+.show-shadow {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
