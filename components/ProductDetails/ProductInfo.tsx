@@ -1,27 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
 import { SocialMediaData } from '../Common/SocialMediaData';
+import { IProductProps } from '../../data/products';
 
-const ProductInfo: React.FC = () => {
+const ProductInfo: React.FC<IProductProps> = ({ product }) => {
+
     return (
         <div className="product-info">
             <div className="rating-area">
                 <div className="d-flex align-items-center">
-                    <span className="rating">★★★★★</span>
+                    <span className="rating">{product.rating}</span>
                     <p className="review-count text-muted">(25 customer reviews)</p>
                 </div>
             </div>
             <div className="title">
-                <h2>Wooden Table</h2>
+                <h2>{product.title}</h2>
             </div>
             <div className="price d-flex align-items-end">
                 <p className="old-price d-flex">
                     <span>$</span>
-                    <del>70.00</del>
+                    <del>{product.previousPrice?.toFixed(2)}</del>
                 </p>
                 <p className="new-price d-flex">
                     <span>$</span>
-                    <span>50.00</span>
+                    <span>{product.price.toFixed(2)}</span>
                 </p>
             </div>
             <div className="description">

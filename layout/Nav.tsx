@@ -4,8 +4,13 @@ import Link from 'next/link';
 import { IoIosSearch } from 'react-icons/io';
 import { HiUser } from 'react-icons/hi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/reducers';
 
 const Nav: React.FC = () => {
+    const cartState = useSelector((state: RootState) => state.cart);
+    const cart = cartState.cart;
+
     return (
         <header>
             <div className="container">
@@ -62,7 +67,7 @@ const Nav: React.FC = () => {
                                 <button className="cart-btn">
                                     <AiOutlineShoppingCart />
                                 </button>
-                                <sup>0</sup>
+                                <sup>{cart.length}</sup>
                             </li>
                         </ul>
                     </div>

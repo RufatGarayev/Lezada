@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ICartProps } from '../../redux/reducers/cartReducer';
+import { IProducts } from '../../data/products';
+import {
+    DeleteFromCart, DecreaseProductCount,
+    IncreaseProductCount
+} from '../../redux/actions/cartActions';
+import { useDispatch } from 'react-redux';
 
-const CartTable: React.FC = () => {
+const CartTable: React.FC<ICartProps> = (props) => {
     const [size] = useState<number>(1);
+    const { cart } = props;
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -21,60 +30,75 @@ const CartTable: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div className="product-img-title d-flex align-items-center">
-                                    <div className="product-img">
-                                        <Link href="/">
-                                            <a>
-                                                <Image src="/../public/images/products/wooden-chair.jpg" alt="product" layout='fill' />
-                                            </a>
-                                        </Link>
-                                    </div>
-                                    <div className="product-title">
-                                        <h6>
-                                            <Link href="/">
-                                                <a>Product title</a>
-                                            </Link>
-                                        </h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p className="product-price price m-0"><span>$</span>50.00</p>
-                            </td>
-                            <td>
-                                <div className="quantity-wrapper">
-                                    <div className="quantity-area d-flex align-items-center">
-                                        <button
-                                            className="minus-btn"
-                                        >
-                                            −
-                                        </button>
-                                        <input type="text" size={size} readOnly value={1} />
-                                        <button
-                                            className="plus-btn"
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p className="total-price price m-0">
-                                    <span>$</span>50.00
-                                </p>
-                            </td>
-                            <td>
-                                <div className="remove-btn">
-                                    <button
-                                        type="button"
-                                    >
-                                        ✕
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                        {
+                            cart.map((product: IProducts) => (
+                                <tr key={product.id}>
+                                    <td>
+                                        <div className="product-img-title d-flex align-items-center">
+                                            <div className="product-img">
+                                                <Link href="/">
+                                                    <a>
+                                                        <Image src={product.img} alt={product.title} layout="fill" />
+                                                    </a>
+                                                </Link>
+                                            </div>
+                                            <div className="product-title">
+                                                <h6>
+                                                    <Link href="/">
+                                                        <a>{product.title}</a>
+                                                    </Link>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p className="product-price price m-0">
+                                            <span>$</span>{product.price.toFixed(2)}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div className="quantity-wrapper">
+                                            <div className="quantity-area d-flex align-items-center">
+                                                <button
+                                                    className="minus-btn"
+                                                    onClick={(e) => {
+                                                        dispatch(DecreaseProductCount(product.id));
+                                                    }}
+                                                >
+                                                    −
+                                                </button>
+                                                <input type="text" size={size} readOnly value={product.count} />
+                                                <button
+                                                    className="plus-btn"
+                                                    onClick={(e) => {
+                                                        dispatch(IncreaseProductCount(product.id));
+                                                    }}
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p className="total-price price m-0">
+                                            <span>$</span>{(product.price * product.count).toFixed(2)}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div className="remove-btn">
+                                            <button
+                                                type="button"
+                                                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                                    dispatch(DeleteFromCart(product.id))
+                                                }}
+                                            >
+                                                ✕
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>

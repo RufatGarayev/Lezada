@@ -3,8 +3,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import CartTable from '../components/Cart/CartTable';
 import CartTotals from '../components/Cart/CartTotals';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/reducers';
 
 const Cart: React.FC = () => {
+    const cartState = useSelector((state: RootState) => state.cart);
+    const cart = cartState.cart;
+
     return (
         <>
             <Head>
@@ -35,7 +40,7 @@ const Cart: React.FC = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <CartTable />
+                            <CartTable cart={cart} />
                         </div>
                     </div>
                     <div className="row">

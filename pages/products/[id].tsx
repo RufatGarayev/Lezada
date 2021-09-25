@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import ImgSlider from '../components/ProductDetails/ImgSlider';
-import ProductInfo from '../components/ProductDetails/ProductInfo';
-import Reviews from '../components/ProductDetails/Reviews';
+import ImgSlider from '../../components/ProductDetails/ImgSlider';
+import ProductInfo from '../../components/ProductDetails/ProductInfo';
+import Reviews from '../../components/ProductDetails/Reviews';
+import axios from 'axios';
+import { IProductProps, IProducts } from '../../data/products';
 
-const PDetails: React.FC = () => {
+const ProductDetails: React.FC<IProductProps> = ({ product }) => {
+    console.log(product)
+
     return (
         <>
             <Head>
@@ -44,7 +48,7 @@ const PDetails: React.FC = () => {
                             <ImgSlider />
                         </div>
                         <div className="col-lg-6 col-md-6">
-                            <ProductInfo />
+                            <ProductInfo product={product} />
                         </div>
                     </div>
                     <div className="row">
@@ -58,4 +62,33 @@ const PDetails: React.FC = () => {
     )
 };
 
-export default PDetails;
+export const getStaticPaths = async () => {
+    const res: any = await axios.get(`http://localhost:3000/api/products`);
+    const products = await res.json();
+
+    const paths = products.map((product: IProducts) => {
+        return {
+            params: { id: product.id }
+        };
+    });
+
+    return {
+        paths,
+        fallback: true
+    };
+};
+
+
+export const getStaticProps = async (context: any) => {
+    const res: any = await axios.get(`http://localhost:3000/api/products/${context.params.id}`);
+
+    const product = await res.json();
+
+    return {
+        props: {
+            product
+        }
+    };
+};
+
+export default ProductDetails;

@@ -2,8 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IProductProps } from '../../data/products';
+import { AddToCart, MakeIsInCartTrue } from '../../redux/actions/cartActions';
+import { useDispatch } from 'react-redux';
 
 const ProductCard: React.FC<IProductProps> = ({ product }) => {
+    const dispatch = useDispatch();
 
     return (
         <div className="product-card">
@@ -18,7 +21,7 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
                     }
                 </div>
                 <div className="img">
-                    <Link href="/product-detals">
+                    <Link href={`/products/${product.id}`}>
                         <a><Image src={product.img} alt={product.title} layout='fill' /></a>
                     </Link>
                 </div>
@@ -26,7 +29,7 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
             {/* ===== card-bottom ===== */}
             <div className="card-bottom">
                 <div className="title">
-                    <Link href="/product-detals">
+                    <Link href={`/products/${product.id}`}>
                         <a>
                             <h6>{product.title}</h6>
                         </a>
@@ -43,7 +46,13 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
                     </p>
                 </div>
                 <div className="add-to-cart-btn">
-                    <button type="button">
+                    <button
+                        type="button"
+                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            dispatch(AddToCart(product));
+                            dispatch(MakeIsInCartTrue(product.id));
+                        }}
+                    >
                         ADD TO CART
                     </button>
                 </div>

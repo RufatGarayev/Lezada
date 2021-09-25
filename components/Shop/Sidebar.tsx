@@ -1,13 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../redux/reducers/index';
+import { useDispatch } from 'react-redux';
 import { SortByCategory } from '../../redux/actions/productActions';
 
 interface ICategoriesData {
     id: number;
     title: string;
+};
+
+interface IPopularProducts {
+    id: number;
+    title: string;
+    img: JSX.Element;
+    previousPrice?: number;
+    price: number;
+    rating: string;
 };
 
 const Sidebar: React.FC = () => {
@@ -21,9 +29,31 @@ const Sidebar: React.FC = () => {
         { id: 6, title: "Watches" },
     ];
 
-    const productsState = useSelector((state: RootState) => state.products);
-    const products = productsState.products;
-    const loading = productsState.isLoading;
+    const PopularProducts: IPopularProducts[] = [
+        {
+            id: 2,
+            title: "Wooden Table",
+            img: <Image src="/../public/images/products/wooden-table.jpg" alt="logo" layout='fill' />,
+            previousPrice: 17.00,
+            price: 15.30,
+            rating: "★★★★★"
+        },
+        {
+            id: 1,
+            title: "Glass",
+            img: <Image src="/../public/images/products/glass.jpg" alt="logo" layout='fill' />,
+            price: 15.00,
+            rating: "★★★★★"
+        },
+        {
+            id: 4,
+            title: "Wooden Chair",
+            img: <Image src="/../public/images/products/wooden-chair.jpg" alt="logo" layout='fill' />,
+            price: 17.60,
+            rating: "★★★★★"
+        }
+    ];
+
     const dispatch = useDispatch();
 
     return (
@@ -49,34 +79,32 @@ const Sidebar: React.FC = () => {
                 <h4>Popular products</h4>
                 <ul>
                     {
-                        products.map(product => (
-                            product.group === "Popular" && (
-                                <li key={product.id}>
-                                    <div className="item d-flex">
-                                        <div className="img">
-                                            <Image src={product.img} alt={product.title} layout='fill' />
-                                        </div>
-                                        <div className="info">
-                                            <div className="title">
-                                                <Link href="#/">
-                                                    <a>{product.title}</a>
-                                                </Link>
-                                            </div>
-                                            <div className="price">
-                                                <p>
-                                                    {
-                                                        product.hasDiscount && (
-                                                            <del>{product.previousPrice}</del>
-                                                        )
-                                                    }
-                                                    <span>${product.price.toFixed(2)}</span>
-                                                </p>
-                                            </div>
-                                            <span className="rating">{product.rating}</span>
-                                        </div>
+                        PopularProducts.map((product) => (
+                            <li key={product.id}>
+                                <div className="item d-flex">
+                                    <div className="img">
+                                        {product.img}
                                     </div>
-                                </li>
-                            )
+                                    <div className="info">
+                                        <div className="title">
+                                            <Link href="#/">
+                                                <a>{product.title}</a>
+                                            </Link>
+                                        </div>
+                                        <div className="price">
+                                            <p>
+                                                {
+                                                    product.previousPrice && (
+                                                        <del>${product.previousPrice.toFixed(2)}</del>
+                                                    )
+                                                }
+                                                <span>${product.price.toFixed(2)}</span>
+                                            </p>
+                                        </div>
+                                        <span className="rating">{product.rating}</span>
+                                    </div>
+                                </div>
+                            </li>
                         ))
                     }
                 </ul>
