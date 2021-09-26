@@ -1,7 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { ICartProps } from '../../redux/reducers/cartReducer';
+import { IProducts } from '../../data/products';
 
-const CartTotals: React.FC = () => {
+const CartTotals: React.FC<ICartProps> = (props) => {
+    const { cart } = props;
+
+    const totalPrice = cart.reduce((total: number, product: IProducts) =>
+        (total += product.price * product.count), 0);
+
     return (
         <div className="cart-totals">
             <div className="cart-totals-content">
@@ -11,13 +18,13 @@ const CartTotals: React.FC = () => {
                 <div className="subtotal price d-flex justify-content-between align-items-center">
                     <h6>Subtotal</h6>
                     <p>
-                        <span>$</span>50.00
+                        <span>$</span>{totalPrice.toFixed(2)}
                     </p>
                 </div>
                 <div className="grand-total price d-flex justify-content-between">
                     <h5>Total</h5>
                     <p>
-                        <span>$</span>50.00
+                        <span>$</span>{totalPrice.toFixed(2)}
                     </p>
                 </div>
             </div>

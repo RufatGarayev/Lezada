@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { IoIosSearch } from 'react-icons/io';
 import { HiUser } from 'react-icons/hi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import SideBarCart from './SideBarCart';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/reducers';
+import { RootState } from '../../redux/reducers';
 
 const Nav: React.FC = () => {
+    const [showSidebarCart, setShowSidebarCart] = useState<boolean>(false);
     const [shadow, setShadow] = useState<boolean>(false);
     const cartState = useSelector((state: RootState) => state.cart);
     const cart = cartState.cart;
@@ -76,7 +78,12 @@ const Nav: React.FC = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <button className="cart-btn">
+                                    <button
+                                        className="cart-btn"
+                                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                            setShowSidebarCart(true);
+                                        }}
+                                    >
                                         <AiOutlineShoppingCart />
                                     </button>
                                     <sup>{cart.length}</sup>
@@ -86,6 +93,18 @@ const Nav: React.FC = () => {
                     </nav>
                 </div>
             </div>
+            {/* ===== sidebar-cart ===== */}
+            <SideBarCart
+                showSidebarCart={showSidebarCart}
+                setShowSidebarCart={setShowSidebarCart}
+            />
+            {/* ===== dark bg-color ===== */}
+            <div
+                className={showSidebarCart ? "dark-bg-color" : "d-none"}
+                onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                    setShowSidebarCart(false);
+                }}
+            ></div>
         </header>
     )
 };

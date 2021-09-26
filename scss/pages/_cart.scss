@@ -1,5 +1,5 @@
 #cart-content {
-  padding: 110px 0;
+  padding: 110px 0 120px;
 
   a {
     font-weight: 400;
@@ -180,6 +180,26 @@
 
       a {
         display: inline-block;
+        @extend %primary-btn;
+      }
+    }
+  }
+
+  .empty-alert-wrapper {
+    @include flex-display(flex, column, center, center);
+
+    .icon-and-text {
+      span svg {
+        font-size: 140px;
+      }
+
+      p {
+        font-size: 20px;
+      }
+    }
+
+    .back-to-shop-link {
+      a {
         @extend %primary-btn;
       }
     }

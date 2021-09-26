@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HiOutlineArrowRight } from 'react-icons/hi';
-import { SocialMediaData } from '../components/Common/SocialMediaData';
+import { SocialMediaData } from '../../components/Common/SocialMediaData';
 
 const Footer: React.FC = () => {
     return (

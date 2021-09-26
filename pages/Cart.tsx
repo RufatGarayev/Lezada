@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import CartTable from '../components/Cart/CartTable';
 import CartTotals from '../components/Cart/CartTotals';
+import { MdShoppingCart } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/reducers';
 
@@ -38,16 +39,40 @@ const Cart: React.FC = () => {
 
             <section id="cart-content">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <CartTable cart={cart} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-5 offset-lg-7">
-                            <CartTotals />
-                        </div>
-                    </div>
+                    {
+                        cart.length > 0 ? (
+                            <>
+                                <div className="row">
+                                    <div className="col-12">
+                                        <CartTable cart={cart} />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-lg-5 offset-lg-7">
+                                        <CartTotals cart={cart} />
+                                    </div>
+                                </div>
+                            </>
+                        ) : (
+                            <div className="row">
+                                <div className="col-12">
+                                    <>
+                                        <div className="empty-alert-wrapper text-center">
+                                            <div className="icon-and-text">
+                                                <span><MdShoppingCart /></span>
+                                                <p className="text-muted my-4">No items found in cart</p>
+                                            </div>
+                                            <div className="back-to-shop-link">
+                                                <Link href="/Shop">
+                                                    <a className="d-flex align-items-center">Shop Now</a>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </>
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
             </section>
         </>
