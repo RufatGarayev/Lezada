@@ -62,6 +62,44 @@
           }
         }
 
+        .video {
+          display: none;
+
+          iframe {
+            position: fixed;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 900px;
+            height: 550px;
+            z-index: 9999;
+            animation: videoAnim 0.6s ease;
+          }
+
+          @keyframes videoAnim {
+            from {
+              transform: translate(-50%, -40%);
+            }
+            to {
+              transform: translate(-50%, -50%);
+            }
+          }
+
+          .close-btn {
+            button {
+              position: fixed;
+              top: 89px;
+              right: 150px;
+              font-size: 32px;
+              color: #fff !important;
+              z-index: 9999;
+            }
+          }
+        }
+
+        .show-video {
+          display: block;
+        }
+
         h3 {
           font-size: 40px;
           font-weight: 500;
@@ -140,6 +178,11 @@
         }
       }
     }
+  }
+
+  .dark-bg-color {
+    @extend %dark-bg-color;
+    z-index: 999;
   }
 }
 

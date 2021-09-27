@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const OurIdeas: React.FC = () => {
+    const [showVideo, setShowVideo] = useState(false);
+
     return (
         <section id="our-ideas">
             <div className="container">
@@ -23,13 +25,27 @@ const OurIdeas: React.FC = () => {
                         <div className="middle">
                             <div className="bg-img-area">
                                 <div className="content">
-                                    <div className="play-img">
+                                    <div
+                                        className="play-img"
+                                        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                                            setShowVideo(true);
+                                        }}
+                                    >
                                         <Image src="/../public/images/other/icon-play.png" alt="logo" layout='fill' />
                                     </div>
-                                    <div className="video d-none">
+                                    <div className={showVideo ? "video show-video" : "video"}>
+                                        <div className="close-btn">
+                                            <button
+                                                type="button"
+                                                className="text-danger"
+                                                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                                    setShowVideo(false);
+                                                }}
+                                            >
+                                                ✕
+                                            </button>
+                                        </div>
                                         <iframe
-                                            width="560"
-                                            height="315"
                                             src="https://www.youtube.com/embed/feOScd2HdiU"
                                             title="YouTube video player"
                                             frameBorder="0"
@@ -84,6 +100,13 @@ const OurIdeas: React.FC = () => {
                     </div>
                 </div>
             </div>
+            {/* ===== dark bg-color ===== */}
+            <div
+                className={showVideo ? "dark-bg-color" : "d-none"}
+                onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                    setShowVideo(false);
+                }}
+            ></div>
         </section>
     )
 };
