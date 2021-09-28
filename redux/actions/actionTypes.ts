@@ -11,6 +11,7 @@ export enum ActionType {
     // cart action types
     ADD_TO_CART = "ADD_TO_CART",
     DELETE_FROM_CART = "DELETE_FROM_CART",
+    CLEAR_CART = "CLEAR_CART",
     INCREASE_PRODUCT_COUNT = "INCREASE_PRODUCT_COUNT",
     DECREASE_PRODUCT_COUNT = "DECREASE_PRODUCT_COUNT",
     MAKE_ISINCART_TRUE = "MAKE_ISINCART_TRUE"
@@ -42,6 +43,7 @@ interface SortByCategoryAction {
     payload: string;
 };
 
+
 // interfaces for cart actions
 interface AddToCartAction {
     type: ActionType.ADD_TO_CART;
@@ -68,9 +70,13 @@ interface DecreaseAction {
     payload: number;
 };
 
+interface ClearCartAction {
+    type: ActionType.CLEAR_CART;
+}
+
 
 export type ProductAction = GetProductsStartAction | GetProductsSuccessAction | GetProductsErrorAction
     | SortByPriceAction | SortByCategoryAction;
 
 export type CartAction = AddToCartAction | MakeIsInCartTrueAction | RemoveFromCartAction | IncreaseAction
-    | DecreaseAction;
+    | DecreaseAction | ClearCartAction;

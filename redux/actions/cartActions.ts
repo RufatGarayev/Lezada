@@ -19,6 +19,12 @@ export const DeleteFromCart = (id: number) => {
     }
 };
 
+export const ClearCart = () => {
+    return {
+        type: ActionType.CLEAR_CART
+    }
+};
+
 export const IncreaseProductCount = (id: number) => {
     return {
         type: ActionType.INCREASE_PRODUCT_COUNT, payload: id

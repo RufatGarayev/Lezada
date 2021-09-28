@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 import { DeleteFromCart } from '../../redux/actions/cartActions';
 import { IProducts } from '../../data/products';
+import { toast } from 'react-toastify';
 
 interface IProps {
     showSidebarCart: boolean;
@@ -67,7 +68,8 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
                                                         className="remove-product"
                                                         type="button"
                                                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                                            dispatch(DeleteFromCart(item.id))
+                                                            dispatch(DeleteFromCart(item.id));
+                                                            toast.error('"' + item.title + '" removed from the Cart');
                                                         }}
                                                     >
                                                         ✕

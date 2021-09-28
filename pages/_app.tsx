@@ -1,6 +1,7 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
+import 'react-toastify/dist/ReactToastify.css';
 import "react-multi-carousel/lib/styles.css";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';

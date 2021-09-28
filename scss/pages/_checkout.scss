@@ -1,0 +1,139 @@
+.checkout-content {
+  padding: 100px 0 110px;
+
+  .title {
+    padding-bottom: 20px;
+
+    h5 {
+      font-weight: 700;
+    }
+  }
+
+  .billing-address {
+    padding-right: 50px;
+
+    .inputs-wrapper {
+      padding-bottom: 30px;
+
+      input {
+        @extend %input-form;
+        width: 100%;
+      }
+    }
+  }
+
+  .cart-totals-area {
+    padding-left: 80px;
+
+    .cart-totals-and-orders {
+      padding: 40px 45px 25px;
+      background-color: $primaryBgColor;
+      border-radius: 4px;
+
+      h6 {
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .top {
+        padding-bottom: 25px;
+      }
+
+      .body {
+        padding: 30px 0;
+        border-top: #333;
+        border-bottom: #333;
+
+        ul {
+          margin: 0;
+          padding: 0;
+
+          li {
+            padding: 10px 0;
+
+            p {
+              margin: 0;
+            }
+
+            .left {
+              padding-right: 55px;
+
+              a {
+                text-decoration: none;
+
+                .title {
+                  color: #000;
+                  font-weight: 700;
+                  transition: all 0.3s ease;
+                }
+
+                p {
+                  padding: 0;
+                }
+
+                &:hover {
+                  .title {
+                    color: #333;
+                  }
+                }
+              }
+            }
+
+            .right {
+              p,
+              span {
+                font-size: 14px;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+
+      .bottom {
+        .subtotal,
+        .total {
+          padding: 20px 0;
+          border-bottom: #333;
+
+          h6 {
+            line-height: 24px;
+          }
+
+          p,
+          h6 {
+            margin: 0;
+          }
+
+          span,
+          p {
+            font-weight: 700;
+          }
+        }
+
+        .subtotal {
+          h6 {
+            font-size: 16px;
+          }
+        }
+
+        .total {
+          p,
+          span {
+            font-weight: 700;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+
+    .order-btn {
+      padding-top: 35px;
+
+      button {
+        @extend %primary-btn;
+        text-decoration: none;
+      }
+    }
+  }
+}

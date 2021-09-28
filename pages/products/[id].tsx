@@ -63,12 +63,12 @@ const ProductDetails: React.FC<IProductProps> = ({ product }) => {
 };
 
 export const getStaticPaths = async () => {
-    const res: any = await axios.get(`http://localhost:3000/api/products`);
+    const res: any = await fetch(`http://localhost:3000/api/products`);
     const products = await res.json();
 
     const paths = products.map((product: IProducts) => {
         return {
-            params: { id: product.id }
+            params: { id: product.id.toString() }
         };
     });
 
@@ -80,7 +80,7 @@ export const getStaticPaths = async () => {
 
 
 export const getStaticProps = async (context: any) => {
-    const res: any = await axios.get(`http://localhost:3000/api/products/${context.params.id}`);
+    const res: any = await fetch(`http://localhost:3000/api/products/${context.params.id}`);
 
     const product = await res.json();
 

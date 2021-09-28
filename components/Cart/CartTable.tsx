@@ -6,9 +6,10 @@ import { ICartProps } from '../../redux/reducers/cartReducer';
 import { IProducts } from '../../data/products';
 import {
     DeleteFromCart, DecreaseProductCount,
-    IncreaseProductCount
+    IncreaseProductCount, ClearCart
 } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const CartTable: React.FC<ICartProps> = (props) => {
     const [size] = useState<number>(1);
@@ -89,7 +90,8 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                             <button
                                                 type="button"
                                                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                                    dispatch(DeleteFromCart(product.id))
+                                                    dispatch(DeleteFromCart(product.id));
+                                                    toast.error('"' + product.title + '" removed from the Cart');
                                                 }}
                                             >
                                                 ✕
@@ -110,7 +112,12 @@ const CartTable: React.FC<ICartProps> = (props) => {
                         <p className="m-0">Back to Shop</p>
                     </a>
                 </Link>
-                <button type="button">
+                <button
+                    type="button"
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        dispatch(ClearCart());
+                    }}
+                >
                     Clear Cart
                 </button>
             </div>

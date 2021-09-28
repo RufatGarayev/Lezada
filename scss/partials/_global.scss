@@ -33,7 +33,16 @@ img {
   object-fit: cover;
 }
 
-ul, p {
+ul,
+p {
   margin: 0;
   padding: 0;
+}
+
+.Toastify__toast-container {
+  z-index: 9999999;
+
+  .Toastify__toast-body {
+    font-size: 14px;
+  }
 }

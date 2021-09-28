@@ -44,6 +44,12 @@ const cartReducer = (state: ICartProps = initialState, action: CartAction) => {
                 cart: state.cart.filter((product: any) => product.id !== action.payload)
             };
 
+        // clear cart
+        case ActionType.CLEAR_CART:
+            return {
+                ...state, cart: []
+            }
+
         // increasing product count
         case ActionType.INCREASE_PRODUCT_COUNT:
             return {

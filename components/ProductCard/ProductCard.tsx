@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { IProductProps } from '../../data/products';
 import { AddToCart, MakeIsInCartTrue } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const ProductCard: React.FC<IProductProps> = ({ product }) => {
     const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             dispatch(AddToCart(product));
                             dispatch(MakeIsInCartTrue(product.id));
+                            toast.success('"' + product.title + '" added to the Cart');
                         }}
                     >
                         ADD TO CART
