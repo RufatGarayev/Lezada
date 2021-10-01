@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import ImgSlider from '../../components/ProductDetails/ImgSlider';
 import ProductInfo from '../../components/ProductDetails/ProductInfo';
 import Reviews from '../../components/ProductDetails/Reviews';
-import axios from 'axios';
-import { IProductProps, IProducts } from '../../data/products';
+import { IProducts } from '../../data/products';
 
-const ProductDetails: React.FC<IProductProps> = ({ product }) => {
-    console.log(product)
-
+const ProductDetails: React.FC<any> = ({ product }) => {
     return (
         <>
             <Head>
@@ -45,7 +42,7 @@ const ProductDetails: React.FC<IProductProps> = ({ product }) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
-                            <ImgSlider />
+                            <ImgSlider product={product} />
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <ProductInfo product={product} />
@@ -63,7 +60,7 @@ const ProductDetails: React.FC<IProductProps> = ({ product }) => {
 };
 
 export const getStaticPaths = async () => {
-    const res: any = await fetch(`http://localhost:3000/api/products`);
+    const res: any = await fetch("http://localhost:3000/api/products");
     const products = await res.json();
 
     const paths = products.map((product: IProducts) => {
@@ -74,20 +71,18 @@ export const getStaticPaths = async () => {
 
     return {
         paths,
-        fallback: true
+        fallback: false
     };
 };
 
-
 export const getStaticProps = async (context: any) => {
     const res: any = await fetch(`http://localhost:3000/api/products/${context.params.id}`);
-
     const product = await res.json();
 
     return {
         props: {
-            product
-        }
+            product,
+        },
     };
 };
 

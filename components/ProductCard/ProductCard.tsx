@@ -1,17 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IProductProps } from '../../data/products';
-import { AddToCart, MakeIsInCartTrue } from '../../redux/actions/cartActions';
+import { IProducts } from '../../data/products';
+import { AddToCart } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-const ProductCard: React.FC<IProductProps> = ({ product }) => {
+interface IProps {
+    product: IProducts;
+};
+
+const ProductCard: React.FC<IProps> = ({ product }) => {
     const dispatch = useDispatch();
 
     return (
         <div className="product-card">
-            {/* ===== card-top ===== */}
             <div className="card-top">
                 <div className="label-wrapper">
                     {
@@ -23,11 +26,12 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
                 </div>
                 <div className="img">
                     <Link href={`/products/${product.id}`}>
-                        <a><Image src={product.img} alt={product.title} layout='fill' /></a>
+                        <a>
+                            <Image src={product.img} alt={product.title} layout='fill' />
+                        </a>
                     </Link>
                 </div>
             </div>
-            {/* ===== card-bottom ===== */}
             <div className="card-bottom">
                 <div className="title">
                     <Link href={`/products/${product.id}`}>
@@ -51,7 +55,6 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
                         type="button"
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             dispatch(AddToCart(product));
-                            dispatch(MakeIsInCartTrue(product.id));
                             toast.success('"' + product.title + '" added to the Cart');
                         }}
                     >

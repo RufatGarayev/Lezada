@@ -51,7 +51,7 @@ const Products: React.FC = () => {
                     {
                         products.map(product => (
                             product.group === activeGroup && (
-                                <div key={product.id} className="col-lg-3">
+                                <div key={product.id} className="col-lg-3 col-md-6 col-sm-6">
                                     <ProductCard product={product} />
                                 </div>
                             )

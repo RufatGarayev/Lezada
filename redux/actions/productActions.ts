@@ -20,3 +20,9 @@ export const SortByCategory = (title: string) => {
         type: ActionType.SORT_BY_CATEGORY, payload: title
     }
 };
+
+export const SearchProduct = (searchValue: string) => {
+    return {
+        type: ActionType.SEARCH_PRODUCT, payload: searchValue
+    }
+};

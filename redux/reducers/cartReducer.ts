@@ -8,9 +8,9 @@ const initialState = {
     cart: []
 };
 
-
 const cartReducer = (state: ICartProps = initialState, action: CartAction) => {
     switch (action.type) {
+        // add to cart
         case ActionType.ADD_TO_CART:
             let alreadyExists: boolean = false;
 
@@ -27,14 +27,6 @@ const cartReducer = (state: ICartProps = initialState, action: CartAction) => {
 
             return {
                 ...state
-            };
-
-        // making isInCart True
-        case ActionType.MAKE_ISINCART_TRUE:
-            return {
-                ...state,
-                cart: state.cart.map((product: any) => product.id === action.payload ?
-                    { ...product, isInCart: product.isInCart = true } : product)
             };
 
         // delete from cart

@@ -168,14 +168,14 @@ const Checkout: React.FC = () => {
                                                                         <p className="title">{product.title}</p>
                                                                         <p className="count text-muted">
                                                                             Quantity:
-                                                                            <span> {product.count}</span>
+                                                                            <span>{product.count}</span>
                                                                         </p>
                                                                     </a>
                                                                 </Link>
                                                             </div>
                                                             <div className="right d-flex">
                                                                 <span>$</span>
-                                                                <p>{(product.price * product.count).toFixed(2)}</p>
+                                                                <p>{product.price.toFixed(2)}</p>
                                                             </div>
                                                         </li>
                                                     ))

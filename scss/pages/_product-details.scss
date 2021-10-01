@@ -2,7 +2,49 @@
   padding: 100px 0;
 
   .img-slider {
-    padding-top: 10px;
+    padding: 10px 0 0 100px;
+
+    .little-img-wrapper {
+      height: 410px;
+
+      .img-wrapper {
+        padding: 20px;
+
+        button {
+          height: 90px;
+          width: 65px;
+          padding: 5px;
+          border: 1px solid #ffff;
+
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .active-little-img {
+        button {
+          border: 1px solid #000000 !important;
+        }
+      }
+    }
+
+    .big-img-wrapper {
+      height: 100%;
+
+      .img-wrapper {
+        height: 410px;
+        width: 265px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
   }
 
   .product-info {

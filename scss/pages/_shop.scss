@@ -40,6 +40,32 @@
       font-weight: 400;
     }
 
+    .search {
+      padding: 0 40px 40px 0;
+
+      .input-wrapper {
+        position: relative;
+
+        input {
+          @extend %input-form;
+          padding: 10px 0;
+        }
+
+        button {
+          position: absolute;
+          right: 0;
+          top: 5px;
+          color: #a7a4a4;
+          font-size: 18px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    }
+
     .categories {
       padding-bottom: 50px;
 

@@ -1,15 +1,10 @@
 import { ActionType } from "./actionTypes";
 import { IProducts } from "../../data/products";
 
+
 export const AddToCart = (product: IProducts) => {
     return {
         type: ActionType.ADD_TO_CART, payload: product
-    }
-};
-
-export const MakeIsInCartTrue = (id: number) => {
-    return {
-        type: ActionType.MAKE_ISINCART_TRUE, payload: id
     }
 };
 

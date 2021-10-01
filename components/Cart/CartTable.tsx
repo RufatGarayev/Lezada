@@ -37,7 +37,7 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                     <td>
                                         <div className="product-img-title d-flex align-items-center">
                                             <div className="product-img">
-                                                <Link href="/">
+                                                <Link href={`/products/${product.id}`}>
                                                     <a>
                                                         <Image src={product.img} alt={product.title} layout="fill" />
                                                     </a>
@@ -45,7 +45,7 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                             </div>
                                             <div className="product-title">
                                                 <h6>
-                                                    <Link href="/">
+                                                    <Link href={`/products/${product.id}`}>
                                                         <a>{product.title}</a>
                                                     </Link>
                                                 </h6>
@@ -62,6 +62,7 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                             <div className="quantity-area d-flex align-items-center">
                                                 <button
                                                     className="minus-btn"
+                                                    disabled={product.count === 1}
                                                     onClick={(e) => {
                                                         dispatch(DecreaseProductCount(product.id));
                                                     }}
@@ -71,6 +72,7 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                                 <input type="text" size={size} readOnly value={product.count} />
                                                 <button
                                                     className="plus-btn"
+                                                    disabled={product.count === 10}
                                                     onClick={(e) => {
                                                         dispatch(IncreaseProductCount(product.id));
                                                     }}

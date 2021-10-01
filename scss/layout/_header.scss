@@ -17,21 +17,18 @@ header {
       @include flex-display(flex, row, center, space-between);
       padding-right: 11px;
 
-      .links {
-        ul {
-          width: 350px;
-          @include flex-display(flex, row, center, space-between);
-
-          li {
-            @extend %primary-link;
-          }
-        }
+      .brand {
+        margin-top: 10px;
       }
 
       .actions {
         ul {
-          width: 120px;
+          width: 70px;
           @include flex-display(flex, row, center, space-between);
+
+          .hamburger-btn-li {
+            display: none;
+          }
 
           li {
             position: relative;
@@ -69,6 +66,21 @@ header {
         }
       }
     }
+  }
+
+  .links {
+    ul {
+      width: 350px;
+      @include flex-display(flex, row, center, space-between);
+
+      li {
+        @extend %primary-link;
+      }
+    }
+  }
+
+  .links2 {
+    display: none;
   }
 
   .sidebar-cart {
@@ -270,4 +282,86 @@ header {
 
 .show-shadow {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 991.98px) {
+  header {
+    height: 80px;
+
+    .nav-wrapper {
+      height: 80px;
+
+      nav {
+        padding-right: 0;
+
+        .actions {
+          ul {
+            width: 125px;
+
+            .hamburger-btn-li {
+              display: block !important;
+            }
+          }
+        }
+      }
+    }
+
+    .links {
+      display: block;
+      background-color: #fff;
+      width: 280px;
+      transform: translateX(290px);
+      transition: all 0.3s ease;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999999;
+
+      .top {
+        height: 60px;
+        padding: 0 30px 0 40px;
+        position: relative;
+        background-color: $primaryBgColor;
+
+        h6 {
+          margin-bottom: 0;
+          color: $primaryColor;
+        }
+
+        button {
+          font-weight: 700;
+        }
+      }
+
+      ul {
+        height: 170px;
+        padding-right: 220px;
+        margin-top: 36px;
+        display: flex !important;
+        flex-direction: column !important;
+
+        li a {
+          color: #000 !important;
+          font-weight: 500 !important;
+        }
+      }
+    }
+
+    .show-sidebarMenu {
+      transform: translateX(0) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 375.98px) {
+  header {
+    .actions {
+      ul {
+        width: 100px !important;
+      }
+    }
+  }
 }

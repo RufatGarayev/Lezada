@@ -1,15 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IoIosSearch } from 'react-icons/io';
+import SideBarCart from './SideBarCart';
 import { HiUser } from 'react-icons/hi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import SideBarCart from './SideBarCart';
+import { VscMenu } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 
+interface ILinks {
+    id: number;
+    title: string;
+    href: string;
+};
+
 const Nav: React.FC = () => {
+    const Links: ILinks[] = [
+        { id: 1, title: "Home", href: "/" },
+        { id: 2, title: "About", href: "/About" },
+        { id: 3, title: "Shop", href: "/Shop" },
+        { id: 4, title: "Contact", href: "/Contact" }
+    ];
+
     const [showSidebarCart, setShowSidebarCart] = useState<boolean>(false);
+    const [showMenu, setShowMenu] = useState<boolean>(false);
     const [shadow, setShadow] = useState<boolean>(false);
     const cartState = useSelector((state: RootState) => state.cart);
     const cart = cartState.cart;
@@ -43,35 +57,19 @@ const Nav: React.FC = () => {
                         </div>
                         <div className="links">
                             <ul>
-                                <li>
-                                    <Link href="/">
-                                        <a>Home</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/About">
-                                        <a>About</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/Shop">
-                                        <a>Shop</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/Contact">
-                                        <a>Contact</a>
-                                    </Link>
-                                </li>
+                                {
+                                    Links.map(link => (
+                                        <li key={link.id}>
+                                            <Link href={link.href}>
+                                                <a>{link.title}</a>
+                                            </Link>
+                                        </li>
+                                    ))
+                                }
                             </ul>
                         </div>
                         <div className="actions">
                             <ul>
-                                <li>
-                                    <button>
-                                        <IoIosSearch />
-                                    </button>
-                                </li>
                                 <li>
                                     <Link href="/Login">
                                         <a><HiUser /></a>
@@ -88,10 +86,52 @@ const Nav: React.FC = () => {
                                     </button>
                                     <sup>{cart.length}</sup>
                                 </li>
+                                <li className="hamburger-btn-li">
+                                    <button
+                                        type="button"
+                                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                            setShowMenu(true);
+                                        }}
+                                    >
+                                        <VscMenu />
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     </nav>
                 </div>
+            </div>
+
+            {/* ===== sidebar-menu ===== */}
+            <div className={showMenu ? "show-sidebarMenu links" : "links links2"}>
+                <div className="top d-flex align-items-center justify-content-between">
+                    <h6>MENU</h6>
+                    <button
+                        type="button"
+                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            setShowMenu(false);
+                        }}
+                    >
+                        ✕
+                    </button>
+                </div>
+                <ul>
+                    {
+                        Links.map(link => (
+                            <li key={link.id}>
+                                <Link href={link.href}>
+                                    <a
+                                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                                            setShowMenu(false);
+                                        }}
+                                    >
+                                        {link.title}
+                                    </a>
+                                </Link>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
             {/* ===== sidebar-cart ===== */}
             <SideBarCart
@@ -100,9 +140,10 @@ const Nav: React.FC = () => {
             />
             {/* ===== dark bg-color ===== */}
             <div
-                className={showSidebarCart ? "dark-bg-color" : "d-none"}
+                className={showMenu || showSidebarCart ? "dark-bg-color" : "d-none"}
                 onClick={(e: React.MouseEvent<HTMLDivElement>) => {
                     setShowSidebarCart(false);
+                    setShowMenu(false);
                 }}
             ></div>
         </header>

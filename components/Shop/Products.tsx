@@ -23,11 +23,17 @@ const Products: React.FC = () => {
     return (
         <div className="products">
             {
-                loading ? (message) : (
+                loading ? (
+                    <p>Loading...</p>
+
+                ) : products.length === 0 ? (
+                    <p className="alert">No products found</p>
+                    
+                ) : (
                     <>
                         <div className="row">
                             {
-                                products.slice(0, visible).map(product => (
+                                products.slice(0, visible).map((product: any) => (
                                     <div key={product.id} className="col-lg-3">
                                         <ProductCard product={product} />
                                     </div>

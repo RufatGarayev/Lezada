@@ -17,7 +17,7 @@ const productReducer = (state: IProductReducerState = initialState, action: Prod
     switch (action.type) {
         // get products
         case ActionType.GET_PRODUCTS_START:
-            return { ...state, isLoading: true, message: "Loading..." };
+            return { ...state, isLoading: true };
         case ActionType.GET_PRODUCTS_SUCCESS:
             return { ...state, products: action.payload, isLoading: false };
         case ActionType.GET_PRODUCTS_ERROR:
@@ -48,6 +48,15 @@ const productReducer = (state: IProductReducerState = initialState, action: Prod
             return {
                 ...state,
                 products: sortByCategory
+            }
+
+        // search product 
+        case ActionType.SEARCH_PRODUCT:
+            return {
+                ...state,
+                products: state.products.filter((product: IProducts) => (
+                    product.title.toLowerCase().indexOf(action.payload.toLowerCase()) !== -1
+                ))
             }
 
         default:

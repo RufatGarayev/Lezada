@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 interface IProps {
     showSidebarCart: boolean;
     setShowSidebarCart: any;
-}
+};
 
 const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) => {
     const cartState = useSelector((state: RootState) => state.cart);
@@ -46,16 +46,22 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
                                 </div>
                                 <div className="cart-body">
                                     {
-                                        cart.map((item: any) => (
+                                        cart.map((item: IProducts) => (
                                             <div
                                                 key={item.id}
                                                 className="product-item d-flex align-items-start justify-content-between"
                                             >
                                                 <div className="product-img">
-                                                    <Image src={item.img} alt={item.title} layout="fill" />
+                                                    <Link href={`/products/${item.id}`}>
+                                                        <a>
+                                                            <Image src={item.img} alt={item.title} layout="fill" />
+                                                        </a>
+                                                    </Link>
                                                 </div>
                                                 <div className="product-info w-100">
-                                                    <a href="#">{item.title}</a>
+                                                    <Link href={`/products/${item.id}`}>
+                                                        <a>{item.title}</a>
+                                                    </Link>
                                                     <p className="product-count-and-price">
                                                         <span className="product-price">${(item.price).toFixed(2)}</span>
                                                         <span className="multiplication">×</span>
@@ -96,7 +102,14 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
                                             </a>
                                         </Link>
                                         <Link href="/Checkout">
-                                            <a className="checkout-btn">Checkout</a>
+                                            <a
+                                                className="checkout-btn"
+                                                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                                                    setShowSidebarCart(false);
+                                                }}
+                                            >
+                                                Checkout
+                                            </a>
                                         </Link>
                                     </div>
                                     <p className="text-muted">Free Shipping on All Orders Over $100!</p>

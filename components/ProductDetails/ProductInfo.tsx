@@ -1,9 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { SocialMediaData } from '../Common/SocialMediaData';
-import { IProductProps } from '../../data/products';
+import { AddToCart } from '../../redux/actions/cartActions';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { IProducts } from '../../data/products';
 
-const ProductInfo: React.FC<IProductProps> = ({ product }) => {
+interface IProps {
+    product: IProducts;
+};
+
+const ProductInfo: React.FC<IProps> = ({ product }) => {
+    const dispatch = useDispatch();
 
     return (
         <div className="product-info">
@@ -34,7 +42,15 @@ const ProductInfo: React.FC<IProductProps> = ({ product }) => {
                 </p>
             </div>
             <div className="add-to-cart-btn">
-                <button type="button">ADD TO CART</button>
+                <button
+                    type="button"
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        dispatch(AddToCart(product));
+                        toast.success('"' + product.title + '" added to the Cart');
+                    }}
+                >
+                    ADD TO CART
+                </button>
             </div>
             <div className="table">
                 <table className="w-100">

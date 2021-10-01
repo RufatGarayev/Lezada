@@ -7,14 +7,14 @@ export enum ActionType {
     GET_PRODUCTS_ERROR = "GET_PRODUCTS_ERROR",
     SORT_BY_PRICE = "SORT_BY_PRICE",
     SORT_BY_CATEGORY = "SORT_BY_CATEGORY",
+    SEARCH_PRODUCT = "SEARCH_PRODUCT",
 
     // cart action types
     ADD_TO_CART = "ADD_TO_CART",
     DELETE_FROM_CART = "DELETE_FROM_CART",
     CLEAR_CART = "CLEAR_CART",
     INCREASE_PRODUCT_COUNT = "INCREASE_PRODUCT_COUNT",
-    DECREASE_PRODUCT_COUNT = "DECREASE_PRODUCT_COUNT",
-    MAKE_ISINCART_TRUE = "MAKE_ISINCART_TRUE"
+    DECREASE_PRODUCT_COUNT = "DECREASE_PRODUCT_COUNT"
 };
 
 
@@ -43,16 +43,16 @@ interface SortByCategoryAction {
     payload: string;
 };
 
+interface SearchProductAction {
+    type: ActionType.SEARCH_PRODUCT;
+    payload: string;
+};
+
 
 // interfaces for cart actions
 interface AddToCartAction {
     type: ActionType.ADD_TO_CART;
     payload: IProducts;
-};
-
-interface MakeIsInCartTrueAction {
-    type: ActionType.MAKE_ISINCART_TRUE;
-    payload: number;
 };
 
 interface RemoveFromCartAction {
@@ -72,11 +72,11 @@ interface DecreaseAction {
 
 interface ClearCartAction {
     type: ActionType.CLEAR_CART;
-}
+};
 
 
-export type ProductAction = GetProductsStartAction | GetProductsSuccessAction | GetProductsErrorAction
-    | SortByPriceAction | SortByCategoryAction;
+export type ProductAction = GetProductsStartAction | GetProductsSuccessAction |
+    GetProductsErrorAction | SortByPriceAction | SortByCategoryAction | SearchProductAction;
 
-export type CartAction = AddToCartAction | MakeIsInCartTrueAction | RemoveFromCartAction | IncreaseAction
+export type CartAction = AddToCartAction | RemoveFromCartAction | IncreaseAction
     | DecreaseAction | ClearCartAction;

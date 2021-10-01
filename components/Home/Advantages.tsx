@@ -22,7 +22,7 @@ const Advantages: React.FC = () => {
                 <div className="row">
                     {
                         AdvantagesData.map(item => (
-                            <div key={item.id} className="col-lg-3">
+                            <div key={item.id} className="col-lg-3 col-md-3 col-sm-6">
                                 <div className="item">
                                     <div className="icon">{item.icon}</div>
                                     <p className="text-center mt-4">{item.text}</p>

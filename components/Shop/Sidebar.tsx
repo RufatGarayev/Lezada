@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { IoIosSearch } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
-import { SortByCategory } from '../../redux/actions/productActions';
+import { GetProducts, SortByCategory, SearchProduct } from '../../redux/actions/productActions';
 
 interface ICategoriesData {
     id: number;
@@ -54,10 +55,28 @@ const Sidebar: React.FC = () => {
         }
     ];
 
+    const [searchValue, setSearchValue] = useState<string>("");
     const dispatch = useDispatch();
 
     return (
         <div className="sidebar">
+            <div className="search">
+                <div className="input-wrapper">
+                    <input
+                        type="text"
+                        className="search-bar w-100"
+                        placeholder="Search products..."
+                        value={searchValue}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            setSearchValue(e.target.value);
+                            dispatch(SearchProduct(e.target.value));
+                        }}
+                    />
+                    <button type="button">
+                        <IoIosSearch />
+                    </button>
+                </div>
+            </div>
             <div className="categories">
                 <h4>Categories</h4>
                 <ul>

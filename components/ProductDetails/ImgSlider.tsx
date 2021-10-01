@@ -1,49 +1,66 @@
-import React from 'react';
-// import LaptopImg1 from '../../public/images/products/wooden-chair.jpg';
-// import LaptopImg2 from '../../public/images/products/wooden-table.jpg';
-// import LaptopImg3 from '../../public/images/products/glass.jpg';
-// import Image from 'next/image';
-import ImageGallery from 'react-image-gallery';
+import React, { useState } from 'react';
+import Image from 'next/image';
 
-interface IReactImgGalleryOptions {
-    showPlayButton: boolean;
-    showFullscreenButton: boolean;
-    showNav: boolean;
+interface Iimages {
+    id: number;
+    img: any;
 };
 
-interface IReactImgGalleryimages {
-    original: any;
-    thumbnail: any;
-}
+const ImgSlider: React.FC<any> = ({ product }) => {
+    const [clickedBtnId, setClickedBtnId] = useState(1);
+    const [slideIndex, setSlideIndex] = useState(1);
 
-const ImgSlider: React.FC = () => {
-    const options: IReactImgGalleryOptions = {
-        showPlayButton: false,
-        showFullscreenButton: false,
-        showNav: false
-    };
-
-    const images: IReactImgGalleryimages[] = [
+    const Images: Iimages[] = [
         {
-            original: 'https://picsum.photos/id/1018/1000/600/',
-            thumbnail: 'https://picsum.photos/id/1018/1000/600/'
+            id: 1,
+            img: product.img
         },
         {
-            original: 'https://picsum.photos/id/1015/1000/600/',
-            thumbnail: 'https://picsum.photos/id/1015/1000/600/'
+            id: 2,
+            img: <Image src='/../public/images/products/wooden-chair.jpg' alt={product.title} layout="fill" />
         },
         {
-            original: 'https://picsum.photos/id/1019/1000/600/',
-            thumbnail: 'https://picsum.photos/id/1019/1000/600/'
-        },
+            id: 3,
+            img: <Image src='/../public/images/products/wooden-table.jpg' alt={product.title} layout="fill" />
+        }
     ];
 
     return (
         <div className="img-slider">
-            <ImageGallery
-                items={images}
-                {...options}
-            />
+            <div className="row">
+                <div className="col-4">
+                    <div className="little-img-wrapper d-flex flex-column justify-content-between">
+                        {
+                            Images.map(littleImg => (
+                                <div
+                                    key={littleImg.id}
+                                    className={clickedBtnId === littleImg.id ? "img-wrapper active-little-img" : "img-wrapper"}
+                                >
+                                    <button
+                                        onClick={() => {
+                                            setClickedBtnId(littleImg.id);
+                                            setSlideIndex(littleImg.id);
+                                        }}
+                                    >
+                                        {littleImg.img}
+                                    </button>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div className="col-8">
+                    <div className="big-img-wrapper">
+                        {
+                            Images.map(bigImg => (
+                                <div key={bigImg.id} className={slideIndex === bigImg.id ? "img-wrapper" : "d-none"}>
+                                    {bigImg.img}
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     )
 };
