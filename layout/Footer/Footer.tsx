@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <footer>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 col-md-4 col-sm-6">
                         {/* ===== brand and copyright ===== */}
                         <div className="brand-and-copyright">
                             <div className="brand">
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 col-md-4 col-sm-6">
                         {/* ===== about links ===== */}
                         <div className="about-links links">
                             <h6>About</h6>
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 col-md-4 col-sm-6">
                         {/* ===== useful links ===== */}
                         <div className="useful-links links">
                             <h6>Useful Links</h6>
@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 col-md-4 col-sm-6">
                         {/* ===== follow us ===== */}
                         <div className="follow-us">
                             <h6>Follow Us On</h6>
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 col-md-6 col-sm-12">
                         {/* ===== subscribe ===== */}
                         <div className="subscribe">
                             <h2>Subscribe</h2>

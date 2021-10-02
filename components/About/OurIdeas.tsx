@@ -66,7 +66,7 @@ const OurIdeas: React.FC = () => {
                         {/* ===== bottom ===== */}
                         <div className="bottom">
                             <div className="row">
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 col-md-6">
                                     <div className="contact">
                                         <div className="contact-item">
                                             <h6>ADDRESS</h6>
@@ -82,7 +82,7 @@ const OurIdeas: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 col-md-6">
                                     <div className="text">
                                         <p>
                                             Lorem ipsum dolor sit amet, consectetur cing elit.

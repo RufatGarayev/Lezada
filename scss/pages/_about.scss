@@ -64,40 +64,40 @@
 
         .video {
           display: none;
+          position: fixed;
+          flex-direction: column;
+          align-items: center;
+          top: 70px;
+          z-index: 99999;
+          animation: videoAnim 0.6s ease;
 
           iframe {
-            position: fixed;
-            top: 50%;
-            transform: translate(-50%, -50%);
             width: 900px;
             height: 550px;
             z-index: 9999;
-            animation: videoAnim 0.6s ease;
           }
 
           @keyframes videoAnim {
             from {
-              transform: translate(-50%, -40%);
+              transform: translate(0%, 10%);
             }
             to {
-              transform: translate(-50%, -50%);
+              transform: translate(0%, 0%);
             }
           }
 
           .close-btn {
+            padding-bottom: 15px;
+
             button {
-              position: fixed;
-              top: 89px;
-              right: 150px;
               font-size: 32px;
               color: #fff !important;
-              z-index: 9999;
             }
           }
         }
 
         .show-video {
-          display: block;
+          display: flex;
         }
 
         h3 {
@@ -274,6 +274,94 @@
     img,
     div {
       position: static !important;
+    }
+  }
+}
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 991.98px) {
+  #our-ideas {
+    .top {
+      padding: 0;
+    }
+
+    .middle {
+      .video {
+        top: 200px !important;
+
+        iframe {
+          width: 700px !important;
+          height: 375px !important;
+        }
+      }
+    }
+  }
+
+  #testimonials {
+    padding: 90px 130px 120px;
+  }
+
+  #brands {
+    .brand-logo {
+      margin: 0 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  #our-ideas {
+    padding: 60px 0;
+
+    .middle {
+      .video {
+        top: 250px !important;
+
+        iframe {
+          width: 500px !important;
+          height: 275px !important;
+        }
+      }
+
+      a {
+        display: none;
+      }
+    }
+  }
+
+  #testimonials {
+    padding: 90px 70px 120px;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  #our-ideas {
+    .middle {
+      .bg-img-area {
+        .video {
+          top: 200px !important;
+  
+          iframe {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+
+        h3 {
+          font-size: 30px !important;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  #testimonials {
+    padding: 90px 20px 120px;
+  }
+
+  #brands {
+    .brand-logo {
+      height: 36px;
+      margin: 0 10px;
     }
   }
 }

@@ -91,3 +91,12 @@
     }
   }
 }
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 575.98px) {
+  .product-card {
+    .img {
+      height: 500px !important;
+    }
+  }
+}

@@ -23,12 +23,12 @@ const Brands: React.FC = () => {
             items: 5
         },
         tablet: {
-            breakpoint: { max: 1100, min: 500 },
+            breakpoint: { max: 1023, min: 768 },
             items: 3
         },
         mobile: {
-            breakpoint: { max: 500, min: 0 },
-            items: 1
+            breakpoint: { max: 767, min: 0 },
+            items: 2
         }
     };
 
