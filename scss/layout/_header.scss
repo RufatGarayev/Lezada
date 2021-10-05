@@ -240,23 +240,25 @@ header {
           font-size: 14px;
         }
 
-        a {
-          width: 100%;
-          padding: 9px 0;
-          display: inline-block;
-          text-align: center;
-          transition: all 0.3s ease;
-          color: #fff;
-          font-size: 13px;
-          font-weight: 500;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          text-decoration: none;
-          background-color: #333;
-          margin-bottom: 16px;
+        .cart-links {
+          a {
+            width: 100%;
+            padding: 9px 0;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            background-color: #333;
+            margin-bottom: 16px;
 
-          &:hover {
-            background-color: brown;
+            &:hover {
+              background-color: brown;
+            }
           }
         }
       }
@@ -274,16 +276,11 @@ header {
   .show-sidebarCart {
     transform: translateX(-399px) !important;
   }
-
-  .dark-bg-color {
-    @extend %dark-bg-color;
-  }
 }
 
 .show-shadow {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 
 // ======= Responsive Design ======= //
 @media screen and (max-width: 991.98px) {

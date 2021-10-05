@@ -1,6 +1,11 @@
 import { IProducts } from "../../data/products";
 
 export enum ActionType {
+    // primary action types
+    SHOW_SIDEBAR_MENU = "SHOW_SIDEBAR_MENU",
+    SHOW_SIDEBAR_FILTER = "SHOW_SIDEBAR_FILTER",
+    SHOW_SIDEBAR_CART = "SHOW_SIDEBAR_CART",
+
     // product action types
     GET_PRODUCTS_START = "GET_PRODUCTS_START",
     GET_PRODUCTS_SUCCESS = "GET_PRODUCTS_SUCCESS",
@@ -15,6 +20,23 @@ export enum ActionType {
     CLEAR_CART = "CLEAR_CART",
     INCREASE_PRODUCT_COUNT = "INCREASE_PRODUCT_COUNT",
     DECREASE_PRODUCT_COUNT = "DECREASE_PRODUCT_COUNT"
+};
+
+
+// interfaces for primary actions
+interface ShowSidebarMenuAction {
+    type: ActionType.SHOW_SIDEBAR_MENU,
+    payload: boolean;
+};
+
+interface ShowSidebarCartAction {
+    type: ActionType.SHOW_SIDEBAR_CART,
+    payload: boolean;
+};
+
+interface ShowSidebarFilterAction {
+    type: ActionType.SHOW_SIDEBAR_FILTER,
+    payload: boolean;
 };
 
 
@@ -75,8 +97,11 @@ interface ClearCartAction {
 };
 
 
+export type PrimaryAction = ShowSidebarMenuAction | ShowSidebarCartAction |
+    ShowSidebarFilterAction;
+
 export type ProductAction = GetProductsStartAction | GetProductsSuccessAction |
     GetProductsErrorAction | SortByPriceAction | SortByCategoryAction | SearchProductAction;
 
-export type CartAction = AddToCartAction | RemoveFromCartAction | IncreaseAction
-    | DecreaseAction | ClearCartAction;
+export type CartAction = AddToCartAction | RemoveFromCartAction | IncreaseAction |
+    DecreaseAction | ClearCartAction;

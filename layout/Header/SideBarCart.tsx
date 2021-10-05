@@ -5,15 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 import { DeleteFromCart } from '../../redux/actions/cartActions';
 import { IProducts } from '../../data/products';
+import { ShowSidebarCart } from '../../redux/actions/primaryActions';
 import { toast } from 'react-toastify';
 
-interface IProps {
-    showSidebarCart: boolean;
-    setShowSidebarCart: any;
-};
-
-const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) => {
+const SideBarCart: React.FC = () => {
+    const primaryState = useSelector((state: RootState) => state.primary);
     const cartState = useSelector((state: RootState) => state.cart);
+    const showCart = primaryState.showSidebarCart;
     const cart = cartState.cart;
     const dispatch = useDispatch();
 
@@ -21,7 +19,7 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
         (total += product.price * product.count), 0);
 
     return (
-        <div className={showSidebarCart ? "show-sidebarCart sidebar-cart" : "sidebar-cart"}>
+        <div className={showCart ? "show-sidebarCart sidebar-cart" : "sidebar-cart"}>
             <div className="sidebar-cart-wrapper h-100">
                 <div className="sidebar-cart-area d-flex flex-column justify-content-between">
                     {
@@ -37,7 +35,7 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
                                             type="button"
                                             className="text-danger"
                                             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                                setShowSidebarCart(false);
+                                                dispatch(ShowSidebarCart(false));
                                             }}
                                         >
                                             ✕
@@ -90,12 +88,12 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
                                         <h6>Subtotal:</h6>
                                         <span className="product-count">${totalPrice.toFixed(2)}</span>
                                     </div>
-                                    <div className="links">
+                                    <div className="cart-links">
                                         <Link href="/Cart">
                                             <a
                                                 className="view-cart-btn"
                                                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                                                    setShowSidebarCart(false);
+                                                    dispatch(ShowSidebarCart(false));
                                                 }}
                                             >
                                                 View Cart
@@ -105,7 +103,7 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
                                             <a
                                                 className="checkout-btn"
                                                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                                                    setShowSidebarCart(false);
+                                                    dispatch(ShowSidebarCart(false));
                                                 }}
                                             >
                                                 Checkout
@@ -127,7 +125,7 @@ const SideBarCart: React.FC<IProps> = ({ showSidebarCart, setShowSidebarCart }) 
                                             type="button"
                                             className="text-danger"
                                             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                                setShowSidebarCart(false);
+                                                dispatch(ShowSidebarCart(false));
                                             }}
                                         >
                                             ✕

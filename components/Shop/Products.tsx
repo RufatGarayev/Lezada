@@ -34,7 +34,7 @@ const Products: React.FC = () => {
                         <div className="row">
                             {
                                 products.slice(0, visible).map((product: any) => (
-                                    <div key={product.id} className="col-lg-3">
+                                    <div key={product.id} className="col-lg-3 col-md-4 col-sm-6">
                                         <ProductCard product={product} />
                                     </div>
                                 ))

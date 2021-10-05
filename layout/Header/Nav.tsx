@@ -5,7 +5,8 @@ import SideBarCart from './SideBarCart';
 import { HiUser } from 'react-icons/hi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { VscMenu } from 'react-icons/vsc';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { ShowSidebarMenu, ShowSidebarCart } from '../../redux/actions/primaryActions';
 import { RootState } from '../../redux/reducers';
 
 interface ILinks {
@@ -22,11 +23,13 @@ const Nav: React.FC = () => {
         { id: 4, title: "Contact", href: "/Contact" }
     ];
 
-    const [showSidebarCart, setShowSidebarCart] = useState<boolean>(false);
-    const [showMenu, setShowMenu] = useState<boolean>(false);
-    const [shadow, setShadow] = useState<boolean>(false);
+    const primaryState = useSelector((state: RootState) => state.primary);
     const cartState = useSelector((state: RootState) => state.cart);
+    const showMenu = primaryState.showSidebarMenu;
+    const showCart = primaryState.showSidebarCart;
+    const [shadow, setShadow] = useState<boolean>(false);
     const cart = cartState.cart;
+    const dispatch = useDispatch();
 
     useEffect(() => {
         window.addEventListener("scroll", function (this: Window, e: Event): void {
@@ -79,7 +82,7 @@ const Nav: React.FC = () => {
                                     <button
                                         className="cart-btn"
                                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                            setShowSidebarCart(true);
+                                            dispatch(ShowSidebarCart(true));
                                         }}
                                     >
                                         <AiOutlineShoppingCart />
@@ -90,7 +93,7 @@ const Nav: React.FC = () => {
                                     <button
                                         type="button"
                                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                            setShowMenu(true);
+                                            dispatch(ShowSidebarMenu(true));
                                         }}
                                     >
                                         <VscMenu />
@@ -109,7 +112,7 @@ const Nav: React.FC = () => {
                     <button
                         type="button"
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                            setShowMenu(false);
+                            dispatch(ShowSidebarMenu(false));
                         }}
                     >
                         ✕
@@ -122,7 +125,7 @@ const Nav: React.FC = () => {
                                 <Link href={link.href}>
                                     <a
                                         onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                                            setShowMenu(false);
+                                            dispatch(ShowSidebarMenu(false));
                                         }}
                                     >
                                         {link.title}
@@ -134,16 +137,13 @@ const Nav: React.FC = () => {
                 </ul>
             </div>
             {/* ===== sidebar-cart ===== */}
-            <SideBarCart
-                showSidebarCart={showSidebarCart}
-                setShowSidebarCart={setShowSidebarCart}
-            />
+            <SideBarCart />
             {/* ===== dark bg-color ===== */}
             <div
-                className={showMenu || showSidebarCart ? "dark-bg-color" : "d-none"}
+                className={showMenu || showCart ? "dark-bg-color" : "d-none"}
                 onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-                    setShowSidebarCart(false);
-                    setShowMenu(false);
+                    dispatch(ShowSidebarMenu(false));
+                    dispatch(ShowSidebarCart(false));
                 }}
             ></div>
         </header>

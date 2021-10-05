@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import SortingBar from '../components/Shop/SortingBar';
 import Sidebar from '../components/Shop/Sidebar';
 import Products from '../components/Shop/Products';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/reducers/index';
+import { ShowSidebarFilter } from '../redux/actions/primaryActions';
 
 const Shop: React.FC = () => {
+    const primaryState = useSelector((state: RootState) => state.primary);
+    const showFilter = primaryState.showSidebarFilter;
+    const dispatch = useDispatch();
+
     return (
         <>
             <Head>
@@ -45,6 +52,13 @@ const Shop: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                {/* ===== dark bg-color ===== */}
+                <div
+                    className={showFilter ? "dark-bg-color" : "d-none"}
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                        dispatch(ShowSidebarFilter(false));
+                    }}
+                ></div>
             </div>
         </>
     )

@@ -46,3 +46,7 @@ p {
     font-size: 14px;
   }
 }
+
+.dark-bg-color {
+  @extend %dark-bg-color;
+}

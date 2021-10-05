@@ -14,19 +14,25 @@
     }
   }
 
-  .sorting {
-    @include flex-display(flex, row, center, flex-end);
+  .wrapper {
+    .sorting {
+      @include flex-display(flex, row, center, flex-end);
 
-    select {
-      width: 170px;
-      font-size: 15px;
-      padding-bottom: 3px;
-      padding-left: 0;
-      cursor: pointer;
-      color: $primaryColor;
-      border: none;
-      outline: none;
-      border-bottom: 2px solid #ccc;
+      select {
+        width: 170px;
+        font-size: 15px;
+        padding-bottom: 3px;
+        padding-left: 0;
+        cursor: pointer;
+        color: $primaryColor;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #ccc;
+      }
+    }
+
+    .filter-btn {
+      display: none;
     }
   }
 }
@@ -38,6 +44,10 @@
     h4 {
       margin-bottom: 25px;
       font-weight: 400;
+    }
+
+    .close-btn {
+      display: none;
     }
 
     .search {
@@ -219,5 +229,99 @@
         }
       }
     }
+  }
+}
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 991.98px) {
+  .sorting-bar {
+    .wrapper {
+      @include flex-display(flex, row, center, space-between);
+      padding-left: 85px;
+
+      .filter-btn {
+        display: block;
+
+        button {
+          color: $primaryColor;
+
+          svg {
+            margin-top: 3px;
+          }
+
+          p {
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-and-products {
+    padding: 70px 0;
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      transform: translateX(-290px);
+      transition: all 0.3s ease;
+      padding: 20px 30px 30px;
+      background-color: #fff;
+      overflow-y: auto;
+      z-index: 99999;
+
+      .search {
+        padding: 15px 25px 40px 0;
+      }
+
+      .popular-products {
+        display: none;
+      }
+
+      .close-btn {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 0 20px 0;
+
+        button {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .show-sidebar-filter {
+    transform: translateX(0px) !important;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .sorting-bar {
+    .products-found {
+      justify-content: center;
+      padding-bottom: 15px;
+    }
+
+    .wrapper {
+      padding-left: 0;
+      justify-content: center;
+
+      .filter-btn {
+        padding-left: 30px;
+      }
+    }
+  }
+
+  .sidebar-and-products {
+    padding: 50px 0 55px;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .sidebar-and-products {
+    padding: 60px 0 70px;
   }
 }

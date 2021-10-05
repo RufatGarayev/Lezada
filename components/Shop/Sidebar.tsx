@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IoIosSearch } from 'react-icons/io';
-import { useDispatch } from 'react-redux';
-import { GetProducts, SortByCategory, SearchProduct } from '../../redux/actions/productActions';
+import { SortByCategory, SearchProduct } from '../../redux/actions/productActions';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../redux/reducers/index';
+import { ShowSidebarFilter } from '../../redux/actions/primaryActions';
 
 interface ICategoriesData {
     id: number;
@@ -56,10 +58,23 @@ const Sidebar: React.FC = () => {
     ];
 
     const [searchValue, setSearchValue] = useState<string>("");
+    const primaryState = useSelector((state: RootState) => state.primary);
+    const showFilter = primaryState.showSidebarFilter;
     const dispatch = useDispatch();
 
     return (
-        <div className="sidebar">
+        <div className={showFilter ? "sidebar show-sidebar-filter" : "sidebar"}>
+            <div className="close-btn">
+                <button
+                    type="button"
+                    className="text-danger"
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        dispatch(ShowSidebarFilter(false));
+                    }}
+                >
+                    ✕
+                </button>
+            </div>
             <div className="search">
                 <div className="input-wrapper">
                     <input

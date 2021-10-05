@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
-import { useSelector, useDispatch } from 'react-redux';
 import { GetProducts } from '../../redux/actions/productActions';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
 
 interface ITabs {
