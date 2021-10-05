@@ -282,6 +282,7 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+
 // ======= Responsive Design ======= //
 @media screen and (max-width: 991.98px) {
   header {
@@ -350,6 +351,12 @@ header {
     .show-sidebarMenu {
       transform: translateX(0) !important;
     }
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .sidebar-cart {
+    width: 280px !important;
   }
 }
 

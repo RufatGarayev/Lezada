@@ -50,3 +50,15 @@
     }
   }
 }
+
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 991.98px) {
+  #breadcrumb {
+    .content {
+      h1 {
+        font-size: 30px;
+      }
+    }
+  }
+}

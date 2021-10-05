@@ -35,12 +35,8 @@
         font-weight: 700;
       }
 
-      .top {
-        padding-bottom: 25px;
-      }
-
       .body {
-        padding: 30px 0;
+        padding: 10px 0;
         border-top: #333;
         border-bottom: #333;
 
@@ -93,7 +89,7 @@
       .bottom {
         .subtotal,
         .total {
-          padding: 20px 0;
+          padding: 5px 0;
           border-bottom: #333;
 
           h6 {
@@ -133,6 +129,65 @@
       button {
         @extend %primary-btn;
         text-decoration: none;
+      }
+    }
+  }
+}
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 991.98px) {
+  .checkout-content {
+    padding: 80px 0 90px;
+
+    .billing-address {
+      padding-right: 0;
+    }
+
+    .cart-totals-area {
+      padding: 30px 0 0 0;
+    }
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .checkout-content {
+    .cart-totals-and-orders {
+      padding: 35px 20px 20px !important;
+
+      .top {
+        h6 {
+          font-size: 18px;
+        }
+      }
+
+      .body {
+        li {
+          font-size: 14px;
+        }
+      }
+
+      .subtotal {
+        h6 {
+          font-size: 15px !important;
+        }
+
+        .price {
+          span, p {
+            font-size: 15px;
+          }
+        }
+      }
+
+      .total {
+        h6 {
+          font-size: 20px;
+        }
+
+        .price {
+          span, p {
+            font-size: 20px !important;
+          }
+        }
       }
     }
   }

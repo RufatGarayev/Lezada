@@ -24,6 +24,12 @@
   }
 }
 
+#map-area {
+  iframe {
+    height: 450px;
+  }
+}
+
 #get-in-touch {
   padding: 100px 0;
 
@@ -53,5 +59,35 @@
   h1 {
     @extend %section-title;
     margin-bottom: 60px;
+  }
+}
+
+// ======= Responsive Design ======= //
+@media screen and (max-width: 991.98px) {
+  #contact-detail {
+    padding: 50px 0 20px;
+
+    .contact-item {
+      padding-bottom: 40px;
+    }
+  }
+
+  #get-in-touch {
+    padding: 40px 0 70px;
+  }
+
+  #get-in-touch,
+  #contact-detail {
+    h1 {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  #map-area {
+    iframe {
+      height: 300px;
+    }
   }
 }

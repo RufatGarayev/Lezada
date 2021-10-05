@@ -278,7 +278,24 @@
   }
 }
 
+
 // ======= Responsive Design ======= //
+@media screen and (min-width: 1200px) {
+  #brands {
+    .brand-logo {
+      margin: 0 30px;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.99px) {
+  #brands {
+    .brand-logo {
+      margin: 0 14px;
+    }
+  }
+}
+
 @media screen and (max-width: 991.98px) {
   #our-ideas {
     .top {

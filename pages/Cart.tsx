@@ -48,7 +48,7 @@ const Cart: React.FC = () => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-lg-5 offset-lg-7">
+                                    <div className="col-lg-5 offset-lg-7 col-md-6 offset-md-6">
                                         <CartTotals cart={cart} />
                                     </div>
                                 </div>
