@@ -18,3 +18,9 @@ export const ShowSidebarFilter = (trueOrFalse: boolean) => {
         type: ActionType.SHOW_SIDEBAR_FILTER, payload: trueOrFalse
     }
 };
+
+export const MakePaymentSuccess = (trueOrFalse: boolean) => {
+    return {
+        type: ActionType.MAKE_PAYMENT_SUCCESS, payload: trueOrFalse
+    }
+};

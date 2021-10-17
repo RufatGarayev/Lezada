@@ -4,7 +4,7 @@ import { SocialMediaData } from '../Common/SocialMediaData';
 import { AddToCart } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { IProducts } from '../../data/products';
+import { IProducts } from '../../types/types';
 
 interface IProps {
     product: IProducts;
@@ -17,7 +17,7 @@ const ProductInfo: React.FC<IProps> = ({ product }) => {
         <div className="product-info">
             <div className="rating-area">
                 <div className="d-flex align-items-center">
-                    <span className="rating">{product.rating}</span>
+                    <span className="rating">★★★★★</span>
                     <p className="review-count text-muted">(25 customer reviews)</p>
                 </div>
             </div>
@@ -25,10 +25,6 @@ const ProductInfo: React.FC<IProps> = ({ product }) => {
                 <h2>{product.title}</h2>
             </div>
             <div className="price d-flex align-items-end">
-                <p className="old-price d-flex">
-                    <span>$</span>
-                    <del>{product.previousPrice?.toFixed(2)}</del>
-                </p>
                 <p className="new-price d-flex">
                     <span>$</span>
                     <span>{product.price.toFixed(2)}</span>

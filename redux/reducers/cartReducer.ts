@@ -42,22 +42,6 @@ const cartReducer = (state: ICartProps = initialState, action: CartAction) => {
                 ...state, cart: []
             }
 
-        // increasing product count
-        case ActionType.INCREASE_PRODUCT_COUNT:
-            return {
-                ...state,
-                cart: state.cart.map((product: any) => product.id === action.payload ?
-                    { ...product, count: product.count + 1 } : product)
-            };
-
-        // decreasing product count
-        case ActionType.DECREASE_PRODUCT_COUNT:
-            return {
-                ...state,
-                cart: state.cart.map((product: any) => product.id === action.payload ?
-                    { ...product, count: product.count - 1 } : product)
-            };
-
         default:
             return state;
     }

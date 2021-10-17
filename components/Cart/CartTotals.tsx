@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { ICartProps } from '../../redux/reducers/cartReducer';
-import { IProducts } from '../../data/products';
+import { IProducts } from '../../types/types';
 
 const CartTotals: React.FC<ICartProps> = (props) => {
     const { cart } = props;
 
     const totalPrice = cart.reduce((total: number, product: IProducts) =>
-        (total += product.price * product.count), 0);
+        (total += product.price), 0);
 
     return (
         <div className="cart-totals">

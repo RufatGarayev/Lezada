@@ -3,7 +3,8 @@ import { PrimaryAction, ActionType } from '../actions/actionTypes';
 const initialState = {
     showSidebarMenu: false,
     showSidebarCart: false,
-    showSidebarFilter: false
+    showSidebarFilter: false,
+    paymentSuccess: false
 };
 
 const primaryReducer = (state = initialState, action: PrimaryAction) => {
@@ -19,6 +20,10 @@ const primaryReducer = (state = initialState, action: PrimaryAction) => {
         // show sidebar filter
         case ActionType.SHOW_SIDEBAR_FILTER:
             return { ...state, showSidebarFilter: state.showSidebarFilter = action.payload }
+
+        // make the payment success
+        case ActionType.MAKE_PAYMENT_SUCCESS:
+            return { ...state, paymentSuccess: state.paymentSuccess = action.payload }
 
         default:
             return state;

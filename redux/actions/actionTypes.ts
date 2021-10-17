@@ -1,10 +1,11 @@
-import { IProducts } from "../../data/products";
+import { IProducts } from "../../types/types";
 
 export enum ActionType {
     // primary action types
     SHOW_SIDEBAR_MENU = "SHOW_SIDEBAR_MENU",
     SHOW_SIDEBAR_FILTER = "SHOW_SIDEBAR_FILTER",
     SHOW_SIDEBAR_CART = "SHOW_SIDEBAR_CART",
+    MAKE_PAYMENT_SUCCESS = "MAKE_PAYMENT_SUCCESS",
 
     // product action types
     GET_PRODUCTS_START = "GET_PRODUCTS_START",
@@ -36,6 +37,11 @@ interface ShowSidebarCartAction {
 
 interface ShowSidebarFilterAction {
     type: ActionType.SHOW_SIDEBAR_FILTER,
+    payload: boolean;
+};
+
+interface ShowPaymentSuccessAction {
+    type: ActionType.MAKE_PAYMENT_SUCCESS,
     payload: boolean;
 };
 
@@ -98,7 +104,7 @@ interface ClearCartAction {
 
 
 export type PrimaryAction = ShowSidebarMenuAction | ShowSidebarCartAction |
-    ShowSidebarFilterAction;
+    ShowSidebarFilterAction | ShowPaymentSuccessAction;
 
 export type ProductAction = GetProductsStartAction | GetProductsSuccessAction |
     GetProductsErrorAction | SortByPriceAction | SortByCategoryAction | SearchProductAction;

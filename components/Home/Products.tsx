@@ -10,7 +10,7 @@ interface ITabs {
 };
 
 const Products: React.FC = () => {
-    const [activeGroup, setActiveGroup] = useState<string>("Popular");
+    const [activeCategory, setActiveCategory] = useState<string>("Women's Clothing");
     const productsState = useSelector((state: RootState) => state.products);
     const products = productsState.products;
     const dispatch = useDispatch();
@@ -20,9 +20,9 @@ const Products: React.FC = () => {
     }, [dispatch]);
 
     const Tabs: ITabs[] = [
-        { id: 1, title: "New" },
-        { id: 2, title: "Popular" },
-        { id: 3, title: "Sale" }
+        { id: 1, title: "Jewelery" },
+        { id: 2, title: "Women's Clothing" },
+        { id: 3, title: "Men's Clothing" }
     ];
 
     return (
@@ -35,9 +35,9 @@ const Products: React.FC = () => {
                                 Tabs.map(item => (
                                     <li
                                         key={item.id}
-                                        className={activeGroup === item.title ? "active-li" : ""}
+                                        className={activeCategory === item.title ? "active-li" : ""}
                                         onClick={(e: React.MouseEvent<HTMLLIElement>) =>
-                                            setActiveGroup(item.title)
+                                            setActiveCategory(item.title)
                                         }
                                     >
                                         {item.title}
@@ -50,7 +50,7 @@ const Products: React.FC = () => {
                 <div className="row">
                     {
                         products.map(product => (
-                            product.group === activeGroup && (
+                            product.category === activeCategory.toLowerCase() && (
                                 <div key={product.id} className="col-lg-3 col-md-6 col-sm-6">
                                     <ProductCard product={product} />
                                 </div>

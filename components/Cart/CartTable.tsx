@@ -3,16 +3,12 @@ import { HiArrowNarrowLeft } from 'react-icons/hi';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ICartProps } from '../../redux/reducers/cartReducer';
-import { IProducts } from '../../data/products';
-import {
-    DeleteFromCart, DecreaseProductCount,
-    IncreaseProductCount, ClearCart
-} from '../../redux/actions/cartActions';
+import { IProducts } from '../../types/types';
+import { DeleteFromCart, ClearCart } from '../../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 const CartTable: React.FC<ICartProps> = (props) => {
-    const [size] = useState<number>(1);
     const { cart } = props;
     const dispatch = useDispatch();
 
@@ -26,7 +22,6 @@ const CartTable: React.FC<ICartProps> = (props) => {
                             <th>Product</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Total</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
@@ -39,7 +34,7 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                             <div className="product-img">
                                                 <Link href={`/products/${product.id}`}>
                                                     <a>
-                                                        <Image src={product.img} alt={product.title} layout="fill" />
+                                                        <Image src={product.image} alt={product.title} layout="fill" />
                                                     </a>
                                                 </Link>
                                             </div>
@@ -58,34 +53,7 @@ const CartTable: React.FC<ICartProps> = (props) => {
                                         </p>
                                     </td>
                                     <td>
-                                        <div className="quantity-wrapper">
-                                            <div className="quantity-area d-flex align-items-center">
-                                                <button
-                                                    className="minus-btn"
-                                                    disabled={product.count === 1}
-                                                    onClick={(e) => {
-                                                        dispatch(DecreaseProductCount(product.id));
-                                                    }}
-                                                >
-                                                    −
-                                                </button>
-                                                <input type="text" size={size} readOnly value={product.count} />
-                                                <button
-                                                    className="plus-btn"
-                                                    disabled={product.count === 10}
-                                                    onClick={(e) => {
-                                                        dispatch(IncreaseProductCount(product.id));
-                                                    }}
-                                                >
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p className="total-price price m-0">
-                                            <span>$</span>{(product.price * product.count).toFixed(2)}
-                                        </p>
+                                        <p className="product-quantity mt-2">1</p>
                                     </td>
                                     <td>
                                         <div className="remove-btn">

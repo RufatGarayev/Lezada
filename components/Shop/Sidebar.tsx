@@ -75,40 +75,6 @@ const Sidebar: React.FC = () => {
                     ✕
                 </button>
             </div>
-            <div className="search">
-                <div className="input-wrapper">
-                    <input
-                        type="text"
-                        className="search-bar w-100"
-                        placeholder="Search products..."
-                        value={searchValue}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                            setSearchValue(e.target.value);
-                            dispatch(SearchProduct(e.target.value));
-                        }}
-                    />
-                    <button type="button">
-                        <IoIosSearch />
-                    </button>
-                </div>
-            </div>
-            <div className="categories">
-                <h4>Categories</h4>
-                <ul>
-                    {
-                        CategoriesData.map(item => (
-                            <li
-                                key={item.id}
-                                onClick={(e: React.MouseEvent<HTMLLIElement>) => {
-                                    dispatch(SortByCategory(item.title));
-                                }}
-                            >
-                                {item.title}
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
             <div className="popular-products">
                 <h4>Popular products</h4>
                 <ul>

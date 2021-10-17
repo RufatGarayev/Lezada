@@ -13,7 +13,7 @@ const ImgSlider: React.FC<any> = ({ product }) => {
     const Images: Iimages[] = [
         {
             id: 1,
-            img: product.img
+            img: <Image src={product.image} alt={product.title} layout="fill" />
         },
         {
             id: 2,
@@ -28,7 +28,7 @@ const ImgSlider: React.FC<any> = ({ product }) => {
     return (
         <div className="img-slider">
             <div className="row">
-                <div className="col-4">
+                <div className="col-3">
                     <div className="little-img-wrapper d-flex flex-column justify-content-between">
                         {
                             Images.map(littleImg => (
@@ -49,7 +49,7 @@ const ImgSlider: React.FC<any> = ({ product }) => {
                         }
                     </div>
                 </div>
-                <div className="col-8">
+                <div className="col-9">
                     <div className="big-img-wrapper">
                         {
                             Images.map(bigImg => (

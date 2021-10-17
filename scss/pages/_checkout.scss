@@ -26,7 +26,7 @@
     padding-left: 80px;
 
     .cart-totals-and-orders {
-      padding: 40px 45px 25px;
+      padding: 30px 45px 28px;
       background-color: $primaryBgColor;
       border-radius: 4px;
 
@@ -132,6 +132,36 @@
       }
     }
   }
+
+  .payment-success {
+    .text {
+      h5 {
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 14px;
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .back-to-shop-btn {
+      padding-top: 30px;
+
+      a {
+        @extend %primary-btn;
+        text-decoration: none;
+        width: 204px;
+
+        span {
+          margin: 0 5px 2px 0;
+        }
+      }
+    }
+  }
 }
 
 // ======= Responsive Design ======= //
@@ -152,7 +182,7 @@
 @media screen and (max-width: 575.98px) {
   .checkout-content {
     .cart-totals-and-orders {
-      padding: 35px 20px 20px !important;
+      padding: 25px 20px 20px !important;
 
       .top {
         h6 {
@@ -172,7 +202,8 @@
         }
 
         .price {
-          span, p {
+          span,
+          p {
             font-size: 15px;
           }
         }
@@ -184,7 +215,8 @@
         }
 
         .price {
-          span, p {
+          span,
+          p {
             font-size: 20px !important;
           }
         }

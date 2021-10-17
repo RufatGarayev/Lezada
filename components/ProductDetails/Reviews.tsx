@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { AiFillStar } from 'react-icons/ai';
+import Col from 'react-bootstrap/Col';
 
 interface IUsersData {
     id: number;
@@ -52,17 +53,23 @@ const Reviews: React.FC = () => {
                     {
                         UsersData.map(item => (
                             <li key={item.id}>
-                                <div className="user-item d-flex">
-                                    <div className="img">{item.img}</div>
-                                    <div className="info">
-                                        <span className="rating">{item.userRating}</span>
-                                        <div className="title-and-date d-flex">
-                                            <h6>{item.title}</h6>
-                                            <p>{item.date}</p>
-                                        </div>
-                                        <div className="message">
-                                            <p>{item.message}</p>
-                                        </div>
+                                <div className="user-item">
+                                    <div className="row">
+                                        <Col xs={3} sm={2} md={2} lg={2}>
+                                            <div className="img">{item.img}</div>
+                                        </Col>
+                                        <Col xs={9} sm={10} md={10} lg={10}>
+                                            <div className="info">
+                                                <span className="rating">{item.userRating}</span>
+                                                <div className="title-and-date d-flex">
+                                                    <h6>{item.title}</h6>
+                                                    <p>{item.date}</p>
+                                                </div>
+                                                <div className="message">
+                                                    <p>{item.message}</p>
+                                                </div>
+                                            </div>
+                                        </Col>
                                     </div>
                                 </div>
                             </li>

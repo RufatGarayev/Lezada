@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IProducts } from '../../data/products';
+import { IProducts } from '../../types/types';
 import { AddToCart } from '../../redux/actions/cartActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 interface IProps {
@@ -16,18 +16,10 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
     return (
         <div className="product-card">
             <div className="card-top">
-                <div className="label-wrapper">
-                    {
-                        product.label !== "" ?
-                            <div className={product.label === "new" ? "new label" : "sale label"}>
-                                <span>{product.label}</span>
-                            </div> : ""
-                    }
-                </div>
                 <div className="img">
                     <Link href={`/products/${product.id}`}>
                         <a>
-                            <Image src={product.img} alt={product.title} layout='fill' />
+                            <Image src={product.image} alt={product.title} layout='fill' />
                         </a>
                     </Link>
                 </div>
@@ -36,17 +28,12 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
                 <div className="title">
                     <Link href={`/products/${product.id}`}>
                         <a>
-                            <h6>{product.title}</h6>
+                            <h6>{product.title.slice(0, 18)}...</h6>
                         </a>
                     </Link>
                 </div>
                 <div className="product-price">
                     <p>
-                        {
-                            product.hasDiscount && (
-                                <del>${product.previousPrice?.toFixed(2)}</del>
-                            )
-                        }
                         <span>${product.price.toFixed(2)}</span>
                     </p>
                 </div>
@@ -62,7 +49,7 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 };
 

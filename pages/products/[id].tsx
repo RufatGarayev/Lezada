@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ImgSlider from '../../components/ProductDetails/ImgSlider';
 import ProductInfo from '../../components/ProductDetails/ProductInfo';
 import Reviews from '../../components/ProductDetails/Reviews';
-import { IProducts } from '../../data/products';
+import { IProducts } from '../../types/types';
 
 const ProductDetails: React.FC<any> = ({ product }) => {
     return (
@@ -41,10 +41,10 @@ const ProductDetails: React.FC<any> = ({ product }) => {
             <section id="product-details">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6 col-md-6">
+                        <div className="col-lg-6">
                             <ImgSlider product={product} />
                         </div>
-                        <div className="col-lg-6 col-md-6">
+                        <div className="col-lg-6">
                             <ProductInfo product={product} />
                         </div>
                     </div>
@@ -60,7 +60,7 @@ const ProductDetails: React.FC<any> = ({ product }) => {
 };
 
 export const getStaticPaths = async () => {
-    const res: any = await fetch("http://localhost:3000/api/products");
+    const res: any = await fetch("https://fakestoreapi.com/products");
     const products = await res.json();
 
     const paths = products.map((product: IProducts) => {
@@ -76,7 +76,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: any) => {
-    const res: any = await fetch(`http://localhost:3000/api/products/${context.params.id}`);
+    const res: any = await fetch(`https://fakestoreapi.com/products/${context.params.id}`);
     const product = await res.json();
 
     return {

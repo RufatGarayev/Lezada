@@ -1,5 +1,5 @@
 import { ActionType } from "./actionTypes";
-import { IProducts } from "../../data/products";
+import { IProducts } from "../../types/types";
 
 
 export const AddToCart = (product: IProducts) => {
@@ -17,17 +17,5 @@ export const DeleteFromCart = (id: number) => {
 export const ClearCart = () => {
     return {
         type: ActionType.CLEAR_CART
-    }
-};
-
-export const IncreaseProductCount = (id: number) => {
-    return {
-        type: ActionType.INCREASE_PRODUCT_COUNT, payload: id
-    }
-};
-
-export const DecreaseProductCount = (id: number) => {
-    return {
-        type: ActionType.DECREASE_PRODUCT_COUNT, payload: id
     }
 };

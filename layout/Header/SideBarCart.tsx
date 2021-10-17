@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 import { DeleteFromCart } from '../../redux/actions/cartActions';
-import { IProducts } from '../../data/products';
+import { IProducts } from '../../types/types';
 import { ShowSidebarCart } from '../../redux/actions/primaryActions';
 import { toast } from 'react-toastify';
 
@@ -16,7 +16,7 @@ const SideBarCart: React.FC = () => {
     const dispatch = useDispatch();
 
     const totalPrice = cart.reduce((total: number, product: IProducts) =>
-        (total += product.price * product.count), 0);
+        (total += product.price), 0);
 
     return (
         <div className={showCart ? "show-sidebarCart sidebar-cart" : "sidebar-cart"}>
@@ -51,19 +51,29 @@ const SideBarCart: React.FC = () => {
                                             >
                                                 <div className="product-img">
                                                     <Link href={`/products/${item.id}`}>
-                                                        <a>
-                                                            <Image src={item.img} alt={item.title} layout="fill" />
+                                                        <a
+                                                            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                                                                dispatch(ShowSidebarCart(false));
+                                                            }}
+                                                        >
+                                                            <Image src={item.image} alt={item.title} layout="fill" />
                                                         </a>
                                                     </Link>
                                                 </div>
                                                 <div className="product-info w-100">
                                                     <Link href={`/products/${item.id}`}>
-                                                        <a>{item.title}</a>
+                                                        <a
+                                                            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                                                                dispatch(ShowSidebarCart(false));
+                                                            }}
+                                                        >
+                                                            {item.title}
+                                                        </a>
                                                     </Link>
                                                     <p className="product-count-and-price">
                                                         <span className="product-price">${(item.price).toFixed(2)}</span>
                                                         <span className="multiplication">×</span>
-                                                        <span className="product-count text-muted">{item.count}</span>
+                                                        <span className="product-count text-muted">1</span>
                                                     </p>
                                                     <p className="product-total-price"></p>
                                                 </div>

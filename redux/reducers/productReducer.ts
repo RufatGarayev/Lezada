@@ -1,5 +1,5 @@
 import { ActionType, ProductAction } from "../actions/actionTypes";
-import { IProducts } from '../../data/products';
+import { IProducts } from '../../types/types';
 
 interface IProductReducerState {
     products: IProducts[];
