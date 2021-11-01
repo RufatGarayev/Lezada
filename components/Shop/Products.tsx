@@ -9,7 +9,6 @@ const Products: React.FC = () => {
     const productsState = useSelector((state: RootState) => state.products);
     const products = productsState.products;
     const loading = productsState.isLoading;
-    const message = productsState.message;
     const dispatch = useDispatch();
 
     useEffect(() => {

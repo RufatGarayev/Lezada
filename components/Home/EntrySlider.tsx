@@ -8,7 +8,7 @@ SwiperCore.use([Navigation, A11y]);
 
 interface IEntrySliderData {
     id: number;
-    img: JSX.Element;
+    img: string;
     smallTitle: string;
     bigTitle: string;
 };
@@ -17,19 +17,19 @@ const EntrySlider: React.FC = () => {
     const EntrySliderData: IEntrySliderData[] = [
         {
             id: 1,
-            img: <Image src="/../public/images/entry-slider/entry-slide1.jpg" alt="logo" layout='fill' />,
+            img: "/images/entry-slider/entry-slide1.jpg",
             smallTitle: "ACCESSORIES",
             bigTitle: "Bottle Grinder, Small, 2-Piece"
         },
         {
             id: 2,
-            img: <Image src="/../public/images/entry-slider/entry-slide2.jpg" alt="logo" layout='fill' />,
+            img: "/images/entry-slider/entry-slide2.jpg",
             smallTitle: "HANDMADE",
             bigTitle: "Large, Food board"
         },
         {
             id: 3,
-            img: <Image src="/../public/images/entry-slider/entry-slide3.jpg" alt="logo" layout='fill' />,
+            img: "/images/entry-slider/entry-slide3.jpg",
             smallTitle: "ACCESSORIES",
             bigTitle: "Tribeca Hubert, Pendant"
         }
@@ -48,7 +48,7 @@ const EntrySlider: React.FC = () => {
                         EntrySliderData.map(slide => (
                             <SwiperSlide key={slide.id}>
                                 <div className="slide-item">
-                                    {slide.img}
+                                    <Image src={slide.img} alt={slide.bigTitle} layout='fill' />
                                     <div className="slide-content">
                                         <h6>{slide.smallTitle}</h6>
                                         <h1>{slide.bigTitle}</h1>

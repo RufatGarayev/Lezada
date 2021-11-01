@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 interface ITestimonialsData {
     id: number;
-    img: JSX.Element;
+    img: string;
     title: string;
     position: string;
     text: string;
@@ -14,28 +14,28 @@ const Testimonials: React.FC = () => {
     const TestimonialsData: ITestimonialsData[] = [
         {
             id: 1,
-            img: <Image src="/../public/images/testimonials/testimonial-1.png" alt="logo" layout='fill' />,
+            img: "/images/testimonials/testimonial-1.png",
             title: "Sally Ramsey",
             position: "Reporter",
             text: "I can say your dedication is second to none. I like the fact that you are strongly proud of your work in every way."
         },
         {
             id: 2,
-            img: <Image src="/../public/images/testimonials/testimonial-2.jfif" alt="logo" layout='fill' />,
+            img: "/images/testimonials/testimonial-2.jfif",
             title: "Lois Thompson",
             position: "Actor",
             text: "This has already been my fifth-time purchasing their theme. I have been highly satisfied with their work."
         },
         {
             id: 3,
-            img: <Image src="/../public/images/testimonials/testimonial-3.jpg" alt="logo" layout='fill' />,
+            img: "/images/testimonials/testimonial-3.jpg",
             title: "Florence Pittman",
             position: "Model",
             text: "There's nothing would satisfy me much more than a worry-free clean and responsive theme for my high-traffic site."
         },
         {
             id: 4,
-            img: <Image src="/../public/images/testimonials/testimonial-4.jpg" alt="logo" layout='fill' />,
+            img: "/images/testimonials/testimonial-4.jpg",
             title: "Anais Coulon",
             position: "Actor",
             text: "Five-star for good customer support. They have the ability to resolve any issue in less than the time for a coffee cup."
@@ -82,7 +82,7 @@ const Testimonials: React.FC = () => {
                                 </div>
                                 <div className="info">
                                     <div className="img">
-                                        {slide.img}
+                                        <Image src={slide.img} alt="logo" layout='fill' />
                                     </div>
                                     <div className="name-and-position">
                                         <h6>{slide.title}</h6>

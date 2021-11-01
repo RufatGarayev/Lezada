@@ -4,17 +4,17 @@ import Image from 'next/image';
 
 interface IBrands {
     id: number;
-    img: JSX.Element;
+    img: string;
 };
 
 const Brands: React.FC = () => {
     const Brands: IBrands[] = [
-        { id: 1, img: <Image src="/../public/images/brands/logo-1.png" alt="logo" layout='fill' /> },
-        { id: 2, img: <Image src="/../public/images/brands/logo-2.png" alt="logo" layout='fill' /> },
-        { id: 3, img: <Image src="/../public/images/brands/logo-3.png" alt="logo" layout='fill' /> },
-        { id: 4, img: <Image src="/../public/images/brands/logo-4.png" alt="logo" layout='fill' /> },
-        { id: 5, img: <Image src="/../public/images/brands/logo-5.png" alt="logo" layout='fill' /> },
-        { id: 6, img: <Image src="/../public/images/brands/logo-6.png" alt="logo" layout='fill' /> }
+        { id: 1, img: "/images/brands/logo-1.png" },
+        { id: 2, img: "/images/brands/logo-2.png" },
+        { id: 3, img: "/images/brands/logo-3.png" },
+        { id: 4, img: "/images/brands/logo-4.png" },
+        { id: 5, img: "/images/brands/logo-5.png" },
+        { id: 6, img: "/images/brands/logo-6.png" }
     ];
 
     const responsive = {
@@ -48,7 +48,7 @@ const Brands: React.FC = () => {
                     {
                         Brands.map(slide => (
                             <div key={slide.id} className="brand-logo">
-                                {slide.img}
+                                <Image src={slide.img} alt="logo" layout='fill' />
                             </div>
                         ))
                     }

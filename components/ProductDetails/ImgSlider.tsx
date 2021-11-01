@@ -17,11 +17,11 @@ const ImgSlider: React.FC<any> = ({ product }) => {
         },
         {
             id: 2,
-            img: <Image src='/../public/images/products/wooden-chair.jpg' alt={product.title} layout="fill" />
+            img: <Image src='/images/products/wooden-chair.jpg' alt={product.title} layout="fill" />
         },
         {
             id: 3,
-            img: <Image src='/../public/images/products/wooden-table.jpg' alt={product.title} layout="fill" />
+            img: <Image src='/images/products/wooden-table.jpg' alt={product.title} layout="fill" />
         }
     ];
 

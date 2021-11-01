@@ -50,7 +50,7 @@ const Nav: React.FC = () => {
                             <Link href="/">
                                 <a>
                                     <Image
-                                        src="/../public/images/logo/logo.png"
+                                        src="/images/logo/logo.png"
                                         alt="logo"
                                         width={140}
                                         height={21}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { IoIosSearch } from 'react-icons/io';
-import { SortByCategory, SearchProduct } from '../../redux/actions/productActions';
+// import { IoIosSearch } from 'react-icons/io';
+// import { SortByCategory, SearchProduct } from '../../redux/actions/productActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
 import { ShowSidebarFilter } from '../../redux/actions/primaryActions';
@@ -15,7 +15,7 @@ interface ICategoriesData {
 interface IPopularProducts {
     id: number;
     title: string;
-    img: JSX.Element;
+    img: string;
     previousPrice?: number;
     price: number;
     rating: string;
@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
         {
             id: 2,
             title: "Wooden Table",
-            img: <Image src="/../public/images/products/wooden-table.jpg" alt="logo" layout='fill' />,
+            img: "/images/products/wooden-table.jpg",
             previousPrice: 17.00,
             price: 15.30,
             rating: "★★★★★"
@@ -44,20 +44,20 @@ const Sidebar: React.FC = () => {
         {
             id: 1,
             title: "Glass",
-            img: <Image src="/../public/images/products/glass.jpg" alt="logo" layout='fill' />,
+            img: "/images/products/glass.jpg",
             price: 15.00,
             rating: "★★★★★"
         },
         {
             id: 4,
             title: "Wooden Chair",
-            img: <Image src="/../public/images/products/wooden-chair.jpg" alt="logo" layout='fill' />,
+            img: "/images/products/wooden-chair.jpg",
             price: 17.60,
             rating: "★★★★★"
         }
     ];
 
-    const [searchValue, setSearchValue] = useState<string>("");
+    // const [searchValue, setSearchValue] = useState<string>("");
     const primaryState = useSelector((state: RootState) => state.primary);
     const showFilter = primaryState.showSidebarFilter;
     const dispatch = useDispatch();
@@ -83,7 +83,7 @@ const Sidebar: React.FC = () => {
                             <li key={product.id}>
                                 <div className="item d-flex">
                                     <div className="img">
-                                        {product.img}
+                                        <Image src={product.img} alt="logo" layout='fill' />
                                     </div>
                                     <div className="info">
                                         <div className="title">

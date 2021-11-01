@@ -10,7 +10,7 @@ const Discount: React.FC = () => {
                     <div className="col-lg-10 offset-lg-1">
                         <div className="item">
                             <div className="img">
-                                <Image src="/../public/images/other/cabinet.jpg" alt="product" layout='fill' />
+                                <Image src="/images/other/cabinet.jpg" alt="product" layout='fill' />
                             </div>
                             <div className="tags">
                                 <ul>

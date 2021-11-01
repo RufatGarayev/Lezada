@@ -16,7 +16,7 @@ const Reviews: React.FC = () => {
     const UsersData: IUsersData[] = [
         {
             id: 1,
-            img: <Image src='/../public/images/users/user1.jpeg' alt="user" width={82} height={82} />,
+            img: <Image src='/images/users/user1.jpeg' alt="user" width={75} height={75} />,
             title: "Scott James",
             userRating: "★★★★★",
             date: "April 5, 2020",
@@ -24,7 +24,7 @@ const Reviews: React.FC = () => {
         },
         {
             id: 2,
-            img: <Image src='/../public/images/users/user2.jpeg' alt="user" width={70} height={70} />,
+            img: <Image src='/images/users/user2.jpeg' alt="user" width={70} height={70} />,
             title: "Owen Christ",
             userRating: "★★★★★",
             date: "April 7, 2020",
@@ -32,7 +32,7 @@ const Reviews: React.FC = () => {
         },
         {
             id: 3,
-            img: <Image src='/../public/images/users/user3.jpeg' alt="user" width={70} height={70} />,
+            img: <Image src='/images/users/user3.jpeg' alt="user" width={70} height={70} />,
             title: "Edna Watson",
             userRating: "★★★★★",
             date: "April 9, 2020",

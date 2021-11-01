@@ -31,7 +31,7 @@ const OurIdeas: React.FC = () => {
                                             setShowVideo(true);
                                         }}
                                     >
-                                        <Image src="/../public/images/other/icon-play.png" alt="logo" layout='fill' />
+                                        <Image src="/images/other/icon-play.png" alt="logo" layout='fill' />
                                     </div>
                                     <div className={showVideo ? "video show-video" : "video"}>
                                         <div className="close-btn">
