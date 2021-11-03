@@ -183,7 +183,6 @@
   }
 }
 
-
 // ======= Responsive Design ======= //
 @media screen and (max-width: 991.98px) {
   #entry-slider {
@@ -210,6 +209,16 @@
         h1 {
           font-size: 34px;
         }
+      }
+    }
+  }
+
+  #home-products {
+    .tabs {
+      width: auto;
+
+      li {
+        font-size: 23px;
       }
     }
   }
@@ -271,10 +280,9 @@
 
   #home-products {
     .tabs {
-      width: 230px;
-
       li {
-        font-size: 25px;
+        font-size: 20px;
+        text-align: center;
       }
     }
   }
