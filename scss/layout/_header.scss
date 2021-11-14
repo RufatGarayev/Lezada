@@ -166,6 +166,10 @@ header {
             div {
               position: static !important;
             }
+
+            img {
+              object-fit: contain;
+            }
           }
 
           .product-info {
@@ -281,7 +285,6 @@ header {
 .show-shadow {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 
 // ======= Responsive Design ======= //
 @media screen and (max-width: 991.98px) {

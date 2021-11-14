@@ -19,6 +19,7 @@ const CartTable: React.FC<ICartProps> = (props) => {
                 <table className="w-100">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Product</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -30,14 +31,16 @@ const CartTable: React.FC<ICartProps> = (props) => {
                             cart.map((product: IProducts) => (
                                 <tr key={product.id}>
                                     <td>
-                                        <div className="product-img-title d-flex align-items-center">
-                                            <div className="product-img">
-                                                <Link href={`/products/${product.id}`}>
-                                                    <a>
-                                                        <Image src={product.image} alt={product.title} layout="fill" />
-                                                    </a>
-                                                </Link>
-                                            </div>
+                                        <div className="product-img">
+                                            <Link href={`/products/${product.id}`}>
+                                                <a>
+                                                    <Image src={product.image} alt={product.title} layout="fill" />
+                                                </a>
+                                            </Link>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="product-title-wrapper">
                                             <div className="product-title">
                                                 <h6>
                                                     <Link href={`/products/${product.id}`}>

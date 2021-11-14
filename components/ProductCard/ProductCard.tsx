@@ -19,7 +19,7 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
                 <div className="img">
                     <Link href={`/products/${product.id}`}>
                         <a>
-                            <Image src={product.image} alt={product.title} layout='fill' />
+                            <Image src={product.image} alt={product.title} layout="fill" />
                         </a>
                     </Link>
                 </div>

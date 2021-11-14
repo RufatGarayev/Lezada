@@ -5,7 +5,7 @@ import { GetProducts } from '../../redux/actions/productActions';
 import { RootState } from '../../redux/reducers/index';
 
 const Products: React.FC = () => {
-    const [visible, setVisible] = useState<number>(8);
+    const [visible, setVisible] = useState<number>(9);
     const productsState = useSelector((state: RootState) => state.products);
     const products = productsState.products;
     const loading = productsState.isLoading;
@@ -16,7 +16,7 @@ const Products: React.FC = () => {
     }, [dispatch]);
 
     const showMoreProducts = (e: React.MouseEvent<HTMLButtonElement>) => {
-        setVisible((prevValue) => prevValue + 4);
+        setVisible((prevValue) => prevValue + 3);
     };
 
     return (
@@ -33,7 +33,7 @@ const Products: React.FC = () => {
                         <div className="row">
                             {
                                 products.slice(0, visible).map((product: any) => (
-                                    <div key={product.id} className="col-lg-3 col-md-4 col-sm-6">
+                                    <div key={product.id} className="col-lg-4 col-md-4 col-sm-6">
                                         <ProductCard product={product} />
                                     </div>
                                 ))

@@ -1,7 +1,12 @@
 .product-card {
-  margin-bottom: 40px;
+  margin: 0 5px 35px;
+  padding: 20px 20px 30px;
+  border: 1px solid #e7e3e3;
+  transition: all 0.3s ease;
 
   &:hover {
+    box-shadow: 0 3px 10px 1px #ddcdcd;
+
     .add-to-cart-btn {
       button {
         background-color: $darkColor;
@@ -41,7 +46,12 @@
     }
 
     .img {
-      height: 350px;
+      margin-bottom: 10px;
+      height: 200px !important;
+
+      img {
+        object-fit: contain;
+      }
     }
   }
 
@@ -79,7 +89,7 @@
       padding-top: 16px;
 
       button {
-        border: 1px solid $darkColor;
+        border: 1px solid #ccc;
         padding: 10px 0;
         width: 100%;
         line-height: normal;
@@ -93,10 +103,27 @@
 }
 
 // ======= Responsive Design ======= //
+@media screen and (max-width: 1200px) {
+  .product-card {
+    margin: 0 0 30px;
+    padding: 20px 15px 22px;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .product-card {
+    padding: 20px 20px 30px;
+  }
+}
+
 @media screen and (max-width: 575.98px) {
   .product-card {
-    .img {
-      height: 500px !important;
+    margin: 0 0 46px;
+
+    .card-top {
+      .img {
+        height: 500px !important;
+      }
     }
   }
 }

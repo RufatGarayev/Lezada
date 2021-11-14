@@ -5,13 +5,13 @@
     padding: 10px 0 0 100px;
 
     .little-img-wrapper {
-      height: 290px;
+      height: 310px;
 
       .img-wrapper {
         button {
-          width: 79px;
-          height: 85px;
-          padding: 10px;
+          width: 70px;
+          height: 90px;
+          padding: 4px;
           margin-right: 15px;
           border: 1px solid #fff;
 
@@ -23,6 +23,10 @@
           img,
           div {
             position: static !important;
+          }
+
+          img:first-of-type {
+            object-fit: contain;
           }
         }
       }
@@ -49,6 +53,10 @@
         img,
         div {
           position: static !important;
+        }
+
+        img {
+          object-fit: contain;
         }
       }
     }

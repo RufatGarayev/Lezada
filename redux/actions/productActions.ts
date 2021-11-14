@@ -4,7 +4,6 @@ import axios from "axios";
 export const GetProducts = () => (dispatch: any) => {
     dispatch({ type: ActionType.GET_PRODUCTS_START });
     axios
-        // .get("http://localhost:3000/api/products")
         .get("https://fakestoreapi.com/products")
         .then(response => dispatch({ type: ActionType.GET_PRODUCTS_SUCCESS, payload: response.data }))
         .catch(error => dispatch({ type: ActionType.GET_PRODUCTS_ERROR, payload: error }))
