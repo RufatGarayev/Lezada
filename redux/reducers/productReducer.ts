@@ -23,11 +23,15 @@ const productReducer = (state: IProductReducerState = initialState, action: Prod
         case ActionType.GET_PRODUCTS_ERROR:
             return { ...state, message: action.payload, isLoading: false };
 
-        // sorting products by latest and price
+        // sorting products by letter and price
         case ActionType.SORT_BY_PRICE:
             const sortedProducts = state.products.slice();
 
-            if (action.payload === "lowPrice") {
+            if (action.payload === "nameA") {
+                sortedProducts.sort((a, b) => (a.title > b.title ? 1 : -1));
+            } else if (action.payload === "nameZ") {
+                sortedProducts.sort((a, b) => (a.title < b.title ? 1 : -1));
+            } else if (action.payload === "lowPrice") {
                 sortedProducts.sort((a, b) => (a.price > b.price ? 1 : -1));
             } else if (action.payload === "highPrice") {
                 sortedProducts.sort((a, b) => (a.price < b.price ? 1 : -1));

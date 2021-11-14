@@ -29,6 +29,8 @@ const SortingBar: React.FC = () => {
                             <div className="sorting">
                                 <select onChange={handleChange}>
                                     <option value="default">Default</option>
+                                    <option value="nameA">Name (A-Z)</option>
+                                    <option value="nameZ">Name (Z-A)</option>
                                     <option value="lowPrice">Price - Low to High</option>
                                     <option value="highPrice">Price - High to Low</option>
                                 </select>

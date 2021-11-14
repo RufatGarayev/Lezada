@@ -27,7 +27,7 @@ const Products: React.FC = () => {
 
                 ) : products.length === 0 ? (
                     <p className="alert">No products found</p>
-                    
+
                 ) : (
                     <>
                         <div className="row">
@@ -41,14 +41,18 @@ const Products: React.FC = () => {
                         </div>
                         <div className="row">
                             <div className="col-12">
-                                <div className="load-more-btn">
-                                    <button
-                                        type="button"
-                                        onClick={showMoreProducts}
-                                    >
-                                        Load More
-                                    </button>
-                                </div>
+                                {
+                                    products.length >= visible && (
+                                        <div className="load-more-btn">
+                                            <button
+                                                type="button"
+                                                onClick={showMoreProducts}
+                                            >
+                                                Load More
+                                            </button>
+                                        </div>
+                                    )
+                                }
                             </div>
                         </div>
                     </>
